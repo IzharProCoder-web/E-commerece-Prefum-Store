@@ -167,13 +167,13 @@ const HomeProduct = () => {
         >
           {homeProductData.map((data, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white rounded-lg shadow-sm text-center hover:shadow-md transition-shadow duration-300 relative group">
+              <div className="bg-white shadow-sm text-center hover:shadow-md transition-shadow duration-300 relative group">
                 {/* Image Container */}
-                <div className="relative overflow-hidden rounded-lg">
+                <div className="relative overflow-hidden ">
                   <img
                     src={data.img}
                     alt={data.name}
-                    className="w-full h-64 object-cover rounded-lg mb-6 transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-64 object-cover  mb-6 transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Quick Add Button */}
                   <button
@@ -266,7 +266,7 @@ const HomeProduct = () => {
 
         {/* Quantity Selector and Add to Cart Button */}
         <div className="flex sm:flex-row flex-col sm:items-center gap-3 mb-4">
-          <div className="flex justify-center px-3 sm:px-6 py-2 items-center bg-white border-2 border-[#000] gap-4 sm:gap-2 rounded-full">
+          <div className="flex justify-center px-3 sm:px-8 py-1 items-center bg-white border-2 border-[#000] gap-4 sm:gap-2 rounded-full">
             <button
               onClick={handleDecrement}
               className="hover:text-[#ff7be5] text-lg"
@@ -282,7 +282,7 @@ const HomeProduct = () => {
             </button>
           </div>
           <Link to="/cart">
-            <button className="w-full sm:w-auto mt-4 bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300">
+            <button className="w-full sm:w-auto  bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300">
               ADD TO CART
             </button>
           </Link>

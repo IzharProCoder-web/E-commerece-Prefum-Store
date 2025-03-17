@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom"; // Import NavLink instead of Link
 
-const Navbar = () => {
+const Navbar = ({setShowLoginPop}) => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -145,6 +145,7 @@ const Navbar = () => {
           </svg>
 
           <svg
+          onClick={() => setShowLoginPop(true)}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -309,6 +310,8 @@ const Navbar = () => {
           </svg>
 
           <svg
+          
+            onClick={() => setShowLoginPop(true)}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -318,7 +321,7 @@ const Navbar = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="cursor-pointer"
+            className="cursor-pointer "
           >
             <circle cx="12" cy="8" r="5" />
             <path d="M20 21a8 8 0 0 0-16 0" />
@@ -355,7 +358,7 @@ const Navbar = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="cursor-pointer"
+              className="cursor-pointer "
             >
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
               <path d="M3 6h18" />
