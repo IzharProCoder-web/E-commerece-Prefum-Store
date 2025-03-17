@@ -73,9 +73,10 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="w-[100px] p-0 m-0 ">
-            
-      <Link to="/">    <img src="./Image/FAIZZIFY-LOGO.png" alt="Logo" /></Link>
-          
+          <Link to="/">
+            {" "}
+            <img src="./Image/FAIZZIFY-LOGO.png" alt="Logo" />
+          </Link>
         </div>
 
         {/* Navigation Links */}
@@ -160,7 +161,8 @@ const Navbar = () => {
           </svg>
 
           <div className="relative">
-            <svg
+         <Link to="/fav">
+         <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -177,10 +179,12 @@ const Navbar = () => {
             <div className="absolute bg-pink-300 -bottom-[5px] -right-[8px] w-[20px] rounded-[50%] text-center text-white">
               <p>0</p>
             </div>
+         </Link>
           </div>
 
           <div className="relative">
-            <svg
+           <Link to="/cart">
+           <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -199,6 +203,7 @@ const Navbar = () => {
             <div className="absolute bottom-[3px] -right-[20px] w-[20px] rounded-[50%] text-center ">
               <p>(0)</p>
             </div>
+           </Link>
           </div>
         </div>
       </nav>

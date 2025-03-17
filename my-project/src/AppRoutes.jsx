@@ -5,6 +5,8 @@ import Shop from "./Pages/Shop";
 import About from "./Pages/About";
 import Product from "./Pages/Product";
 import Contact from "./Pages/Contact";
+import AddToCart from "./Pages/AddToCart";
+import AddToFav from "./Pages/AddToFav";
 
 
 const AppRoutes = () => {
@@ -15,6 +17,8 @@ const AppRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/product" element={<Product />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/cart" element={<AddToCart />} />
+      <Route path="/fav" element={<AddToFav />} />
     </Routes>
   );
 };
