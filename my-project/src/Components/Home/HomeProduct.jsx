@@ -102,7 +102,7 @@ const HomeProduct = () => {
                     className="w-full h-64 object-cover rounded-lg mb-6 transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Quick Add Button */}
-                  <button className=" flex items-center absolute bottom-7  left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white">
+                  <button className=" flex items-center absolute bottom-7  left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-6 md:px-4 px-5 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white">
                     + Quick Add
                   </button>
                 </div>
