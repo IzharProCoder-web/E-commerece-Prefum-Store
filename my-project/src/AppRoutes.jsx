@@ -10,6 +10,7 @@ import AddToFav from "./Pages/AddToFav";
 import LoginPop from "./Components/LoginPop";
 import TopNavbar from "./TopNabar";
 import MainNavbar from "./MainNavbar";
+import FAQ from "./Pages/FAQ";
 
 
 
@@ -28,6 +29,7 @@ const AppRoutes = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/cart" element={<AddToCart />} />
       <Route path="/fav" element={<AddToFav />} />
+      <Route path="/faq" element={<FAQ />} />
     </Routes>
  </>
   );
