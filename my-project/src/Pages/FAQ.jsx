@@ -1,10 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { faqs } from "../data";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
-
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -21,21 +21,28 @@ const FAQ = () => {
         </p>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
               className="border-b border-gray-200 last:border-b-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <button
+              <motion.button
                 className="w-full py-6 text-left flex justify-between items-center focus:outline-none"
                 onClick={() => toggleAccordion(index)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span className="text-xl font-medium text-gray-800">
                   {faq.question}
                 </span>
-                <span
-                  className={`transform transition-transform duration-300 text-gray-600 ${
-                    activeIndex === index ? "rotate-180" : ""
-                  }`}
+                <motion.span
+                  className={`text-gray-600`}
+                  animate={{
+                    rotate: activeIndex === index ? 180 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
                   <svg
                     className="w-6 h-6"
@@ -51,14 +58,24 @@ const FAQ = () => {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                </span>
-              </button>
-              {activeIndex === index && (
-                <div className="pb-6 text-gray-600">
-                  <p>{faq.answer}</p>
-                </div>
-              )}
-            </div>
+                </motion.span>
+              </motion.button>
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    className="overflow-hidden"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="pb-6 text-gray-600">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>
