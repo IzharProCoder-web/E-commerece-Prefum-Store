@@ -100,6 +100,14 @@ const Navbar = ({setShowLoginPop}) => {
             </li>
             <li>
               <NavLink
+                to="/faq"
+                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+              >
+                faq
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/product"
                 className={({ isActive }) => (isActive ? "active" : "")} // Add active class
               >
