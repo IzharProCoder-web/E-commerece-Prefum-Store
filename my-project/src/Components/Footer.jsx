@@ -14,13 +14,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-[#DAB7D3] text-black py-12 px-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <address className="space-y-4 not-italic">
             <h3 className="text-xl font-bold">COSMECOS</h3>
-            <p className="text-gray-400">
+            <p className="text-black">
               58 White St., New York
               <br />
               <a href="mailto:cosmecos_company@mail.com" className="hover:text-white">
@@ -36,29 +36,19 @@ const Footer = () => {
           {/* Useful Links */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Useful Links</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <a href="/" className="text-gray-400 hover:text-white" aria-label="Home">
+            <div className="grid grid-cols gap-4">
+              <div className="space-y-2 flex flex-col">
+                <a href="/" className="text-black hover:text-white" aria-label="Home">
                   Home Pages
                 </a>
-                <a href="/other" className="text-gray-400 hover:text-white" aria-label="Other Pages">
+                <a href="/other" className=" hover:text-white" aria-label="Other Pages">
                   Other Pages
                 </a>
-                <a href="/portfolio" className="text-gray-400 hover:text-white" aria-label="Portfolio">
+                <a href="/portfolio" className=" hover:text-white" aria-label="Portfolio">
                   Portfolio
                 </a>
               </div>
-              <div className="space-y-2">
-                <a href="/blog" className="text-gray-400 hover:text-white" aria-label="Blog">
-                  Blog Posts
-                </a>
-                <a href="/shop" className="text-gray-400 hover:text-white" aria-label="Shop">
-                  Shop Products
-                </a>
-                <a href="/contact" className="text-gray-400 hover:text-white" aria-label="Contact">
-                  Contacts
-                </a>
-              </div>
+             
             </div>
           </div>
 
@@ -70,7 +60,7 @@ const Footer = () => {
                 type="email"
                 name="email"
                 placeholder="Your Email"
-                className="p-2 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="p-2 rounded   ring-2 ring-purple-500 placeholder:text-zinc-950"
                 aria-label="Email for subscription"
                 required
               />
@@ -86,7 +76,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-black text-black mt-8 pt-8 text-center ">
           <p>© 2025 Cosmecos Theme</p>
           <p>
             <a href="/terms" className="hover:text-white" aria-label="Terms and Conditions">
