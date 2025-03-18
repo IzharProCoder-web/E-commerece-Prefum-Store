@@ -8,4 +8,4 @@ const AddToCart = () => {
   )
 }
 
-export default AddToCart;
+export default AddToCart

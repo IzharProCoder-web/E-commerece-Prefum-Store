@@ -95,8 +95,14 @@ const HomeHeroComp = () => {
               Explore <MoveRight className="w-5 h-5" />
             </motion.button>
           </div>
+
+          
         </SwiperSlide>
+        
       </Swiper>
+
+
+
     </section>
   );
 };
