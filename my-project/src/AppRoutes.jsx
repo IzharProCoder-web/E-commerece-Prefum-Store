@@ -11,6 +11,7 @@ import LoginPop from "./Components/LoginPop";
 import TopNavbar from "./TopNabar";
 import MainNavbar from "./MainNavbar";
 import FAQ from "./Pages/FAQ";
+import Footer from "./Components/Footer";
 
 
 
@@ -31,6 +32,8 @@ const AppRoutes = () => {
       <Route path="/fav" element={<AddToFav />} />
       <Route path="/faq" element={<FAQ />} />
     </Routes>
+
+    <Footer />
  </>
   );
 };
