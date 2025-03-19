@@ -13,7 +13,7 @@ const AboutUsHeroComp = () => {
       transition={{ duration: 0.8 }} // Animation duration
     >
       {/* Text Section */}
-      <div className="text-center lg:text-left w-full lg:w-1/2 mb-10 lg:mb-0">
+      <div className="text-center w-full lg:w-1/2 mb-10 lg:mb-0">
         <p className="text-sm md:text-base text-black mb-3 md:mb-4 font-[Jost] font-bold">
           Our Passion for Perfume
         </p>
