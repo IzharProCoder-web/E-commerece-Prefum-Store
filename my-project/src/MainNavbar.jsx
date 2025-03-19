@@ -333,7 +333,8 @@ const Navbar = ({ setShowLoginPop }) => {
             <path d="M20 21a8 8 0 0 0-16 0" />
           </svg>
 
-          <div className="relative">
+       <Link to="/fav">
+       <div className="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -352,9 +353,11 @@ const Navbar = ({ setShowLoginPop }) => {
               <p>0</p>
             </div>
           </div>
+       </Link>
 
           <div className="relative">
-            <svg
+           <Link to="cart">
+           <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -370,6 +373,7 @@ const Navbar = ({ setShowLoginPop }) => {
               <path d="M3 6h18" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
+           </Link>
             <div className="absolute bottom-[0px] -right-[20px] w-[20px] rounded-[50%] text-center ">
               <p>(0)</p>
             </div>
