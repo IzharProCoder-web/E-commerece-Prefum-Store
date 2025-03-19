@@ -74,6 +74,7 @@ const HomeProduct = () => {
                 {/* Image Container */}
                 <div className="relative overflow-hidden ">
                   <img
+                  loading="lazy"
                     src={data.img}
                     alt={data.name}
                     className="w-full h-64 object-cover  mb-6 transition-transform duration-300 group-hover:scale-105"
