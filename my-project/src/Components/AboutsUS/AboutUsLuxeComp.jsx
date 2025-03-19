@@ -15,7 +15,7 @@ const AboutUsLuxeComp = () => {
       {/* Image Section */}
       <div className="w-full lg:w-1/2 flex justify-center lg:justify-start mb-10 lg:mb-0">
         <motion.img
-          src="./public/Image/Aboust-us-img-2.webp"
+          src="./Image/Aboust-us-img-2.webp"
           alt="Luxe Comfort"
           className="w-full max-w-xs md:max-w-md lg:max-w-lg"
           initial={{ opacity: 0, x: -50 }} // Initial state (hidden)

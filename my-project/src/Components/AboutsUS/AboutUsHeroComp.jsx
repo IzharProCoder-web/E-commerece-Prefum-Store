@@ -30,7 +30,7 @@ const AboutUsHeroComp = () => {
       {/* Image Section */}
       <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
         <motion.img
-          src="./public/Image/Aboust-us-img-1.webp"
+          src="./Image/Aboust-us-img-1.webp"
           alt="About Us"
           className="w-full max-w-xs md:max-w-md lg:max-w-lg"
           initial={{ opacity: 0, x: 50 }} // Initial state (hidden)
