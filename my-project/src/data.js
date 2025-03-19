@@ -1,4 +1,6 @@
 // src/data.js
+
+
 export const homeProductData  = [
   {
     id: 1,
@@ -135,4 +137,49 @@ export const faqs = [
     answer:
       "Choosing the right perfume depends on your personal preference and the occasion. We recommend trying out samples or reading our detailed fragrance notes to find the perfect match.",
   },
+];
+export const contactData = [
+  {
+    id: 1,
+    icon: "FaMapMarkerAlt", // Use the icon name as a string
+    title: "Address",
+    details: ["Copley, South Australia 5732, Australia."],
+  },
+  {
+    id: 2,
+    icon: "FiPhoneCall", // Use the icon name as a string
+    title: "Call us",
+    details: ["+ (02) 6171 3859", "+ (07) 4088 1324"],
+  },
+  {
+    id: 3,
+    icon: "FaClock", // Use the icon name as a string
+    title: "Open",
+    details: ["Monday - Friday: 8am - 4pm", "Saturday - Sunday: 9am - 5pm"],
+  },
+  {
+    id: 4,
+    icon: "FaEnvelope", // Use the icon name as a string
+    title: "Emails",
+    details: ["example@example.com", "example@example.com"],
+  },
+];
+
+export const contactFaq = [
+  {
+    question: "How long will shipping take?",
+    answer:
+      "All orders are shipped within 12-36 hours from our warehouse in Bellingham WA.  Delivery times will depend on your shipping option but all orders are tracked from our facility to your door.  ",
+  },
+  {
+    question: "How do I know if my order is confirmed?",
+    answer:
+      "This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall.",
+  },
+  {
+    question: "Can I change my shipping address after my order is placed?",
+    answer:
+      "This is an example of a response that you might give. It's good to be as thorough as possible in responses as that has a tendency to improve trust overall",
+  },
+  
 ];
