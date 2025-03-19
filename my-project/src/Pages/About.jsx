@@ -1,9 +1,10 @@
 import React from 'react'
+import AboutUsHeroComp from '../Components/AboutsUS/AboutUsHeroComp'
 
 const About = () => {
   return (
     <div>
-      <h1>About</h1>
+    <AboutUsHeroComp />
     </div>
   )
 }
