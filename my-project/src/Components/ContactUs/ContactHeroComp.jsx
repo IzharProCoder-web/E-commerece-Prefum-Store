@@ -15,7 +15,6 @@ const ContactHeroComp = () => {
       {/* Image Section */}
       <div className="w-full lg:w-1/2 flex justify-center lg:justify-start mb-8 lg:mb-0">
         <motion.img
-        loading="lazy"
           src="./Image/Contact-Us-img1.webp"
           alt="Luxe Comfort"
           className="w-full max-w-[500px] lg:max-w-none"
