@@ -83,7 +83,8 @@ const HomeProduct = () => {
                   <img
                     src={data.img}
                     alt={data.name}
-                    className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover mb-6"
+                    className="w-full sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover mb-6 cursor-pointer"
+                    onClick={() => handleQuickAddClick(data)} // Add onClick event here
                   />
                   {/* Heart Icon (Favorite Button) */}
                   <button
