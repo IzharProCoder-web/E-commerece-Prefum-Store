@@ -80,15 +80,11 @@ const HomeProduct = () => {
               <div className="bg-white shadow-sm text-center hover:shadow-md transition-shadow duration-300 relative group">
                 {/* Image Container */}
                 <div className="relative overflow-hidden">
-                  <div
-                    className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 mb-6 flex items-center justify-center"
-                    style={{
-                      backgroundImage: `url(${data.img})`,
-                      backgroundPosition: "center",
-                      backgroundSize: "cover", // Ensures the image covers the container
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  ></div>
+                  <img
+                    src={data.img}
+                    alt={data.name}
+                    className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover mb-6"
+                  />
                   {/* Heart Icon (Favorite Button) */}
                   <button
                     className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
@@ -157,15 +153,11 @@ const HomeProduct = () => {
                 {/* Duplicate the same image multiple times for the slide effect */}
                 {[1, 2, 3].map((_, index) => (
                   <SwiperSlide key={index}>
-                    <div
-                      className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96"
-                      style={{
-                        backgroundImage: `url(${selectedProduct.img})`,
-                        backgroundPosition: "center",
-                        backgroundSize: "cover", // Ensures the image covers the container
-                        backgroundRepeat: "no-repeat",
-                      }}
-                    ></div>
+                    <img
+                      src={selectedProduct.img} // Same image for all slides
+                      alt={`${selectedProduct.name} - Slide ${index + 1}`}
+                      className="w-full h-auto max-h-[400px] object-contain"
+                    />
                   </SwiperSlide>
                 ))}
                 {/* Custom Navigation Buttons */}
