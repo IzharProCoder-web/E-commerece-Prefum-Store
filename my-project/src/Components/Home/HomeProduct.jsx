@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import { StoreContext } from "../../StoreContext.jsx";
 
 const HomeProduct = () => {
-  const {addToCart, homeProductData} = useContext(StoreContext)
+  const { addToCart, homeProductData } = useContext(StoreContext);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -19,12 +19,11 @@ const HomeProduct = () => {
   const handleQuickAddClick = (product) => {
     setSelectedProduct(product);
     setShowPopup(true);
-
   };
 
   const handleAddToCart = () => {
-    addToCart(homeProductData.name)
-  }
+    addToCart(homeProductData.name);
+  };
 
   const closePopup = () => {
     setShowPopup(false);
@@ -81,13 +80,15 @@ const HomeProduct = () => {
               <div className="bg-white shadow-sm text-center hover:shadow-md transition-shadow duration-300 relative group">
                 {/* Image Container */}
                 <div className="relative overflow-hidden">
-                  <Link to="/product">
-                    <img
-                      src={data.img}
-                      alt={data.name}
-                      className="w-full h-64 object-cover mb-6 transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </Link>
+                  <div
+                    className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 mb-6 flex items-center justify-center"
+                    style={{
+                      backgroundImage: `url(${data.img})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover", // Ensures the image covers the container
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  ></div>
                   {/* Heart Icon (Favorite Button) */}
                   <button
                     className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
@@ -98,7 +99,7 @@ const HomeProduct = () => {
                   {/* Quick Add Button */}
                   <button
                     onClick={() => handleQuickAddClick(data)}
-                    className="flex items-center absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-6 md:px-4 px-5 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white"
+                    className="flex items-center absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-6 md:px-4 px-5 py-2 rounded-full opacity-0 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white"
                   >
                     + Quick Add
                   </button>
@@ -156,11 +157,15 @@ const HomeProduct = () => {
                 {/* Duplicate the same image multiple times for the slide effect */}
                 {[1, 2, 3].map((_, index) => (
                   <SwiperSlide key={index}>
-                    <img
-                      src={selectedProduct.img} // Same image for all slides
-                      alt={`${selectedProduct.name} - Slide ${index + 1}`}
-                      className="w-full h-auto max-h-[400px] object-contain"
-                    />
+                    <div
+                      className="w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96"
+                      style={{
+                        backgroundImage: `url(${selectedProduct.img})`,
+                        backgroundPosition: "center",
+                        backgroundSize: "cover", // Ensures the image covers the container
+                        backgroundRepeat: "no-repeat",
+                      }}
+                    ></div>
                   </SwiperSlide>
                 ))}
                 {/* Custom Navigation Buttons */}

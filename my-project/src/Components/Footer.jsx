@@ -23,7 +23,10 @@ const Footer = () => {
             <p className="text-black">
               58 White St., New York
               <br />
-              <a href="mailto:cosmecos_company@mail.com" className="hover:text-white">
+              <a
+                href="mailto:cosmecos_company@mail.com"
+                className="hover:text-white"
+              >
                 cosmecos_company@mail.com
               </a>
               <br />
@@ -48,14 +51,16 @@ const Footer = () => {
                   Portfolio
                 </p>
               </div>
-             
             </div>
           </div>
 
           {/* Subscription Form */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Subscribe</h3>
-            <form onSubmit={handleSubscribe} className="flex flex-col space-y-4">
+            <form
+              onSubmit={handleSubscribe}
+              className="flex flex-col space-y-4"
+            >
               <input
                 type="email"
                 name="email"
@@ -79,7 +84,11 @@ const Footer = () => {
         <div className="border-t border-black text-black mt-8 pt-8 text-center ">
           <p>© 2025 Cosmecos Theme</p>
           <p>
-            <a href="/terms" className="hover:text-white" aria-label="Terms and Conditions">
+            <a
+              href="/terms"
+              className="hover:text-white"
+              aria-label="Terms and Conditions"
+            >
               Terms and Conditions
             </a>
           </p>

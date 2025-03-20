@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
-import { MoveRight } from 'lucide-react';
-import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { MoveRight } from "lucide-react";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
 const HomeHeroComp = () => {
   const controls = useAnimation();
@@ -15,7 +15,7 @@ const HomeHeroComp = () => {
     controls.start({
       y: 0,
       opacity: 1,
-      transition: { duration: 1.5, ease: 'easeOut' },
+      transition: { duration: 1.5, ease: "easeOut" },
     });
   }, [controls]);
 
@@ -35,7 +35,7 @@ const HomeHeroComp = () => {
           controls.start({
             y: 0,
             opacity: 1,
-            transition: { duration: 1, ease: 'easeOut' },
+            transition: { duration: 1, ease: "easeOut" },
           });
         }}
       >
@@ -70,7 +70,7 @@ const HomeHeroComp = () => {
 
         <SwiperSlide>
           <div
-            className="cursor-pointer h-[600px] bg-cover bg-center flex flex-col items-start justify-center w-full font-['Gabarito'] pl-[10%] pr-[50%]"
+            className="cursor-pointer h-[600px]  bg-cover bg-center flex flex-col items-start justify-center w-full font-['Gabarito'] pl-[10%] pr-[50%]"
             style={{ backgroundImage: "url('/Image/hero-banner-2.jpg')" }}
           >
             <motion.h1
@@ -95,14 +95,8 @@ const HomeHeroComp = () => {
               Explore <MoveRight className="w-5 h-5" />
             </motion.button>
           </div>
-
-          
         </SwiperSlide>
-        
       </Swiper>
-
-
-
     </section>
   );
 };
