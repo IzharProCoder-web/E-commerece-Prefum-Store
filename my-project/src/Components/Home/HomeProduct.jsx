@@ -1,4 +1,3 @@
-// src/components/HomeProduct.js
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -22,13 +21,14 @@ const HomeProduct = () => {
   };
 
   const handleAddToCart = () => {
-    addToCart(homeProductData.name);
+    addToCart(selectedProduct.name, quantity); // Add selected product and quantity to cart
+    closePopup(); // Close the pop-up after adding to cart
   };
 
   const closePopup = () => {
     setShowPopup(false);
     setSelectedProduct(null);
-    setQuantity(1);
+    setQuantity(1); // Reset quantity to 1
   };
 
   const handleDecrement = () => {
@@ -77,14 +77,13 @@ const HomeProduct = () => {
         >
           {homeProductData.map((data, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white shadow-sm text-center hover:shadow-md transition-shadow duration-300 relative group">
+              <div className="w-[255px] h-[400px] mx-auto sm:mr-[10px] group">
                 {/* Image Container */}
                 <div className="relative overflow-hidden">
                   <img
                     src={data.img}
                     alt={data.name}
-                    className="w-full h-[850px] sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover mb-6 cursor-pointer"
-                    onClick={() => handleQuickAddClick(data)} // Add onClick event here
+                    className="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Heart Icon (Favorite Button) */}
                   <button
@@ -96,22 +95,22 @@ const HomeProduct = () => {
                   {/* Quick Add Button */}
                   <button
                     onClick={() => handleQuickAddClick(data)}
-                    className="flex items-center absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-6 md:px-4 px-5 py-2 rounded-full opacity-0 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white"
+                    className="absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-4 md:px-4 px-5 py-2 rounded-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white"
                   >
                     + Quick Add
                   </button>
                 </div>
-                <p className="text-sm text-gray-500 hover:text-[#000] cursor-pointer uppercase tracking-widest">
-                  {data.scents}
-                </p>
-                <Link to="/product">
-                  <h3 className="text-xl font-semibold text-[#000] hover:text-[#ff7be5] cursor-pointer mt-2">
+                <div className="flex flex-col items-center justify-center mt-[10px]">
+                  <p className="text-[#666] font-[Jost] text-[14px]">
+                    {data.scents}
+                  </p>
+                  <p className="font-[Jost] font-semibold text-[18px] mt-[8px]">
                     {data.name}
-                  </h3>
-                </Link>
-                <p className="text-xl text-gray-500 hover:text-[#000] mt-4">
-                  {data.price}
-                </p>
+                  </p>
+                  <p className="text-[#666] font-[Jost] text-[18px] mt-[10px]">
+                    {data.price}
+                  </p>
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -205,11 +204,12 @@ const HomeProduct = () => {
                     +
                   </button>
                 </div>
-                <Link to="/cart ">
-                  <button  onClick={handleAddToCart} className="w-full sm:w-auto  bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300">
-                    ADD TO CART
-                  </button>
-                </Link>
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full sm:w-auto bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300"
+                >
+                  ADD TO CART
+                </button>
               </div>
 
               {/* Free Shipping Message */}
@@ -241,8 +241,12 @@ const HomeProduct = () => {
         </div>
       )}
 
+      {/* See More Products Button */}
       <div className="flex items-center justify-center mt-[60px]">
-        <button className="bg-[#ff7be5] hover:bg-white text-[#fff] hover:text-[#ff7be5] px-7 py-3 rounded-[10px] hover:shadow-2xl hover:border-[1px] hover:border-[#ff7be5] duration-300">
+        <button
+          onClick={() => navigate("/shop")}
+          className="bg-[#ff7be5] hover:bg-white text-[#fff] hover:text-[#ff7be5] px-7 py-3 rounded-[10px] hover:shadow-2xl hover:border-[1px] hover:border-[#ff7be5] duration-300"
+        >
           See More Products
         </button>
       </div>

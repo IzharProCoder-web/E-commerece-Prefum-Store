@@ -4,7 +4,7 @@
 export const homeProductData  = [
   {
     id: 1,
-    img: "/Image/perfum-1.jpeg", // Update the path to match your public folder
+    img: "/Image/perfum-7.jpeg", // Update the path to match your public folder
     scents: "Sweet Scents",
     name: "Vanilla Dream Eau de Parfum",
     price: "25$",
@@ -17,7 +17,7 @@ export const homeProductData  = [
   },
   {
     id: 2,
-    img: "/Image/perfum-2.jpeg",
+    img: "/Image/perfum-7.jpeg",
     scents: "Fresh Scents",
     name: "Ocean Breeze Eau de Parfum",
     price: "28$",
@@ -30,7 +30,7 @@ export const homeProductData  = [
   },
   {
     id: 3,
-    img: "/Image/perfum-3.jpeg",
+    img: "/Image/perfum-7.jpeg",
     scents: "Fresh Scents",
     name: "Ocean Breeze Eau de Parfum",
     price: "28$",
@@ -43,7 +43,7 @@ export const homeProductData  = [
   },
   {
     id: 4,
-    img: "/Image/perfum-4.jpeg",
+    img: "/Image/perfum-7.jpeg",
     scents: "Fresh Scents",
     name: "Ocean Breeze Eau de Parfum",
     price: "28$",
@@ -56,7 +56,7 @@ export const homeProductData  = [
   },
   {
     id: 5,
-    img: "/Image/perfum-5.jpeg",
+    img: "/Image/perfum-7.jpeg",
     scents: "Fresh Scents",
     name: "Ocean Breeze Eau de Parfum",
     price: "28$",
@@ -69,7 +69,7 @@ export const homeProductData  = [
   },
   {
     id: 6,
-    img: "/Image/perfum-6.jpeg",
+    img: "/Image/perfum-7.jpeg",
     scents: "Fresh Scents",
     name: "Ocean Breeze Eau de Parfum",
     price: "28$",
@@ -96,7 +96,7 @@ export const homeProductData  = [
   },
   {
     id: 8,
-    img: "/Image/perfum-8.jpeg",
+    img: "/Image/perfum-7.jpeg",
     scents: "Fresh Scents",
     name: "Ocean Breeze Eau de Parfum",
     price: "28$",
@@ -183,3 +183,10 @@ export const contactFaq = [
   },
   
 ];
+
+
+
+
+
+
+

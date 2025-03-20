@@ -74,8 +74,12 @@ const Navbar = ({ setShowLoginPop }) => {
         {/* Logo */}
         <div className="w-[100px] p-0 m-0 ">
           <Link to="/">
-            {" "}
-            <img src="./Image/FAIZZIFY-LOGO.png" alt="Logo" />
+       
+        <div className="flex items-center justify-center  relative">
+       <img src="./Image/FAIZZIFY-LOGO.png" alt="Logo " className=" " />
+       <p className="absolute top-[40%] left-[70px] font-bold"> FAIZIFFY</p>
+       </div>
+           
           </Link>
         </div>
 
@@ -99,7 +103,6 @@ const Navbar = ({ setShowLoginPop }) => {
               </NavLink>
             </li>
 
-            
             <li>
               <NavLink
                 to="/shop"
@@ -109,7 +112,6 @@ const Navbar = ({ setShowLoginPop }) => {
               </NavLink>
             </li>
 
-        
             <li>
               <NavLink
                 to="/contact"
@@ -287,14 +289,13 @@ const Navbar = ({ setShowLoginPop }) => {
 
         {/* Logo */}
         <div>
-        <Link to="/">
-
-        <img
-            src="./Image/FAIZZIFY-LOGO.png"
-            alt="Logo"
-            className="w-[70px] sm:w-[100px]"
-          />
-        </Link>
+          <Link to="/">
+            <img
+              src="./Image/FAIZZIFY-LOGO.png"
+              alt="Logo"
+              className="w-[70px] sm:w-[100px]"
+            />
+          </Link>
         </div>
 
         {/* Icons */}
@@ -333,47 +334,47 @@ const Navbar = ({ setShowLoginPop }) => {
             <path d="M20 21a8 8 0 0 0-16 0" />
           </svg>
 
-       <Link to="/fav">
-       <div className="relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="cursor-pointer"
-            >
-              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-            </svg>
-            <div className="absolute bg-pink-300 -bottom-[5px] -right-[8px] w-[20px] rounded-[50%] text-center text-white">
-              <p>0</p>
+          <Link to="/fav">
+            <div className="relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="cursor-pointer"
+              >
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+              <div className="absolute bg-pink-300 -bottom-[5px] -right-[8px] w-[20px] rounded-[50%] text-center text-white">
+                <p>0</p>
+              </div>
             </div>
-          </div>
-       </Link>
+          </Link>
 
           <div className="relative">
-           <Link to="cart">
-           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="cursor-pointer "
-            >
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-              <path d="M3 6h18" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
-           </Link>
+            <Link to="cart">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="cursor-pointer "
+              >
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                <path d="M3 6h18" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+            </Link>
             <div className="absolute bottom-[0px] -right-[20px] w-[20px] rounded-[50%] text-center ">
               <p>(0)</p>
             </div>
@@ -438,7 +439,6 @@ const Navbar = ({ setShowLoginPop }) => {
               </NavLink>
             </li>
 
-        
             <li>
               <NavLink
                 to="/contact"
