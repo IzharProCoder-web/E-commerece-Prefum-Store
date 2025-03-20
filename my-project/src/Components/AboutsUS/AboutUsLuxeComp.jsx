@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const AboutUsLuxeComp = () => {
   return (
     <motion.section
-      className="mt-[50px] md:mt-[100px] flex flex-col gap-10 lg:flex-row justify-between items-center p-5 md:p-12 lg:p-24"
+      className="max-w-[1360px] mx-auto mt-[50px] md:mt-[100px] flex flex-col gap-10 lg:flex-row justify-between items-center p-5 md:p-12 lg:p-24"
       initial={{ opacity: 0, y: 50 }} // Initial state (hidden)
       whileInView={{ opacity: 1, y: 0 }} // Animate when in view
       viewport={{ once: true }} // Only animate once

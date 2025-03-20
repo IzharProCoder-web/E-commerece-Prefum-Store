@@ -27,42 +27,44 @@ const AboutUsQuestionComp = () => {
         </motion.p>
 
         <motion.form
-          className="w-full mx-auto bg-white p-8 rounded-lg shadow-sm "
+          className="w-full max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="flex justify-between gap-[10px]">
-          <div className="mb-6 w-1/2">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7be5] focus:border-[#ff7be5] placeholder-gray-400"
-              placeholder="Enter your name"
-              required
-            />
+          {/* Name and Email Fields */}
+          <div className="flex flex-col sm:flex-row justify-between gap-4 mb-6">
+            <div className="w-full sm:w-1/2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7be5] focus:border-[#ff7be5] placeholder-gray-400"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div className="w-full sm:w-1/2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7be5] focus:border-[#ff7be5] placeholder-gray-400"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
           </div>
 
-          <div className="mb-6 w-1/2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7be5] focus:border-[#ff7be5] placeholder-gray-400"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-          </div>
-
+          {/* Phone Number Field */}
           <div className="mb-6">
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
               Phone Number
@@ -76,6 +78,7 @@ const AboutUsQuestionComp = () => {
             />
           </div>
 
+          {/* Message Field */}
           <div className="mb-6">
             <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
               Message
@@ -90,6 +93,7 @@ const AboutUsQuestionComp = () => {
             ></textarea>
           </div>
 
+          {/* Submit Button */}
           <div className="text-center">
             <button
               type="submit"
@@ -101,7 +105,24 @@ const AboutUsQuestionComp = () => {
         </motion.form>
       </div>
 
-      <p className="text-center mt-[30px] text-[#999]">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" className="cursor-pointer border-b border-[#55555575] text-[#555555d2]">Privacy Policy</a> and <a href="https://policies.google.com/terms" className="cursor-pointer border-b text-[#555555de] border-[#55555575]">Terms of Service</a> apply.</p>
+      {/* Footer Text */}
+      <p className="text-center mt-[30px] text-[#999]">
+        This site is protected by reCAPTCHA and the Google{" "}
+        <a
+          href="https://policies.google.com/privacy"
+          className="cursor-pointer border-b border-[#55555575] text-[#555555d2]"
+        >
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://policies.google.com/terms"
+          className="cursor-pointer border-b text-[#555555de] border-[#55555575]"
+        >
+          Terms of Service
+        </a>{" "}
+        apply.
+      </p>
     </section>
   );
 };

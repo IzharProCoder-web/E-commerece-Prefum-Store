@@ -27,14 +27,15 @@ const ContactQuestionComp = () => {
         </motion.p>
 
         <motion.form
-          className="w-full mx-auto bg-white p-8 rounded-lg shadow-sm "
+          className="w-full max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="flex justify-between gap-[10px]">
-            <div className="mb-6 w-1/2">
+          {/* Name and Email Fields */}
+          <div className="flex flex-col sm:flex-row justify-between gap-4 mb-6">
+            <div className="w-full sm:w-1/2">
               <label
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-2"
@@ -51,7 +52,7 @@ const ContactQuestionComp = () => {
               />
             </div>
 
-            <div className="mb-6 w-1/2">
+            <div className="w-full sm:w-1/2">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-2"
@@ -69,6 +70,7 @@ const ContactQuestionComp = () => {
             </div>
           </div>
 
+          {/* Phone Number Field */}
           <div className="mb-6">
             <label
               htmlFor="phone"
@@ -85,6 +87,7 @@ const ContactQuestionComp = () => {
             />
           </div>
 
+          {/* Message Field */}
           <div className="mb-6">
             <label
               htmlFor="message"
@@ -102,6 +105,7 @@ const ContactQuestionComp = () => {
             ></textarea>
           </div>
 
+          {/* Submit Button */}
           <div className="text-center">
             <button
               type="submit"
@@ -113,6 +117,7 @@ const ContactQuestionComp = () => {
         </motion.form>
       </div>
 
+      {/* Footer Text */}
       <p className="text-center mt-[30px] text-[#999]">
         This site is protected by reCAPTCHA and the Google{" "}
         <a

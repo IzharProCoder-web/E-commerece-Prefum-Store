@@ -6,7 +6,7 @@ import ContactFaqComp from '../Components/ContactUs/ContactFaqComp'
 
 const Contact = () => {
   return (
-    <div>
+    <div className='max-w-[1360px] mx-auto'>
     <ContactHeroComp />
     <ContactInfoComp />
     <ContactQuestionComp />
