@@ -1,22 +1,30 @@
 // src/components/HomeProduct.js
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import React Icons
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { homeProductData } from "../../data.js"; // Import the data
+import { StoreContext } from "../../StoreContext.jsx";
 
 const HomeProduct = () => {
+  const {addToCart, homeProductData} = useContext(StoreContext)
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleQuickAddClick = (product) => {
     setSelectedProduct(product);
     setShowPopup(true);
+
   };
+
+  const handleAddToCart = () => {
+    addToCart(homeProductData.name)
+  }
 
   const closePopup = () => {
     setShowPopup(false);
@@ -72,12 +80,21 @@ const HomeProduct = () => {
             <SwiperSlide key={index}>
               <div className="bg-white shadow-sm text-center hover:shadow-md transition-shadow duration-300 relative group">
                 {/* Image Container */}
-                <div className="relative overflow-hidden ">
-                  <img
-                    src={data.img}
-                    alt={data.name}
-                    className="w-full h-64 object-cover  mb-6 transition-transform duration-300 group-hover:scale-105"
-                  />
+                <div className="relative overflow-hidden">
+                  <Link to="/product">
+                    <img
+                      src={data.img}
+                      alt={data.name}
+                      className="w-full h-64 object-cover mb-6 transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </Link>
+                  {/* Heart Icon (Favorite Button) */}
+                  <button
+                    className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
+                    onClick={() => navigate("/fav")} // Redirect to /fav page
+                  >
+                    <CiHeart className="text-xl text-gray-600 hover:text-[#ff7be5]" />
+                  </button>
                   {/* Quick Add Button */}
                   <button
                     onClick={() => handleQuickAddClick(data)}
@@ -89,9 +106,11 @@ const HomeProduct = () => {
                 <p className="text-sm text-gray-500 hover:text-[#000] cursor-pointer uppercase tracking-widest">
                   {data.scents}
                 </p>
-                <h3 className="text-xl font-semibold text-[#000] hover:text-[#ff7be5] cursor-pointer mt-2">
-                  {data.name}
-                </h3>
+                <Link to="/product">
+                  <h3 className="text-xl font-semibold text-[#000] hover:text-[#ff7be5] cursor-pointer mt-2">
+                    {data.name}
+                  </h3>
+                </Link>
                 <p className="text-xl text-gray-500 hover:text-[#000] mt-4">
                   {data.price}
                 </p>
@@ -188,8 +207,8 @@ const HomeProduct = () => {
                     +
                   </button>
                 </div>
-                <Link to="/cart">
-                  <button className="w-full sm:w-auto  bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300">
+                <Link to="/cart ">
+                  <button  onClick={handleAddToCart} className="w-full sm:w-auto  bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300">
                     ADD TO CART
                   </button>
                 </Link>
@@ -225,7 +244,9 @@ const HomeProduct = () => {
       )}
 
       <div className="flex items-center justify-center mt-[60px]">
-        <button className="bg-[#ff7be5] hover:bg-white text-[#fff] hover:text-[#ff7be5] px-7 py-3 rounded-[10px] hover:shadow-2xl hover:border-[1px] hover:border-[#ff7be5] duration-300">See More Products</button>
+        <button className="bg-[#ff7be5] hover:bg-white text-[#fff] hover:text-[#ff7be5] px-7 py-3 rounded-[10px] hover:shadow-2xl hover:border-[1px] hover:border-[#ff7be5] duration-300">
+          See More Products
+        </button>
       </div>
     </section>
   );

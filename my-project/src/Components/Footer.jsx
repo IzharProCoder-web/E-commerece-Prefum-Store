@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <address className="space-y-4 not-italic">
-            <h3 className="text-xl font-bold">COSMECOS</h3>
+            <h3 className="text-xl font-bold">FAZZIFY</h3>
             <p className="text-black">
               58 White St., New York
               <br />
@@ -38,15 +38,15 @@ const Footer = () => {
             <h3 className="text-xl font-bold">Useful Links</h3>
             <div className="grid grid-cols gap-4">
               <div className="space-y-2 flex flex-col">
-                <a href="/" className="text-black hover:text-white" aria-label="Home">
+                <a href="/" className="text-black " aria-label="Home">
                   Home Pages
                 </a>
-                <a href="/other" className=" hover:text-white" aria-label="Other Pages">
-                  Other Pages
+                <a href="/contact " className=" " aria-label="Other Pages">
+                  Contact Pages
                 </a>
-                <a href="/portfolio" className=" hover:text-white" aria-label="Portfolio">
+                <p className=" " aria-label="Portfolio">
                   Portfolio
-                </a>
+                </p>
               </div>
              
             </div>

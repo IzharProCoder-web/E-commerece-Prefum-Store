@@ -70,9 +70,7 @@ const AboutUsReviewComp = () => {
   return (
     <section className="py-20 bg-gray-50 relative">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-      ></div>
+     
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
