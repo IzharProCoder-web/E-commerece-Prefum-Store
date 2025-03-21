@@ -12,6 +12,7 @@ import TopNavbar from "./TopNabar";
 import MainNavbar from "./MainNavbar";
 import FAQ from "./Pages/FAQ";
 import Footer from "./Components/Footer";
+import Order from "./Pages/Order";
 
 
 
@@ -31,6 +32,7 @@ const AppRoutes = () => {
       <Route path="/cart" element={<AddToCart />} />
       <Route path="/fav" element={<AddToFav />} />
       <Route path="/faq" element={<FAQ />} />
+      <Route path="/order" element={<Order />} />
     </Routes>
 
     <Footer />
