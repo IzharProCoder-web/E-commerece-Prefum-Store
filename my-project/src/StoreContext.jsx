@@ -1,16 +1,16 @@
 /* eslint-disable react-refresh/only-export-components */
-import React from "react";
-import { createContext, useState } from "react";
-import { homeProductData } from "./data.js";
+import React, { createContext, useState } from "react";
+import { homeProductData } from "./data.js"; // Adjust the import path as needed
+
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
-  const addToCart = (itemId) => {
+  const addToCart = (itemId, quantity) => {
     setCartItems((prev) => ({
       ...prev,
-      [itemId]: (prev[itemId] || 0) + 1,
+      [itemId]: (prev[itemId] || 0) + quantity, // Add the selected quantity
     }));
   };
 
@@ -25,6 +25,7 @@ const StoreContextProvider = (props) => {
       return updatedCart;
     });
   };
+
   const getTotalCartAmount = () => {
     if (!cartItems || !homeProductData) return 0;
 

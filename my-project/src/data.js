@@ -2,11 +2,11 @@
 
 export const homeProductData = [
   {
-    id: 1,
+    _id: "1",
     img: "./Image/perfum-7.jpeg",
     scents: "Floral Bliss",
     name: "Rose Petal Whisper",
-    price: "30$",
+    price: 30,
     originalPrice: "38$",
     description:
       "A delicate floral fragrance with hints of rose and jasmine, ideal for romantic evenings.",
@@ -15,11 +15,11 @@ export const homeProductData = [
     vendor: "Blossom Essence",
   },
   {
-    id: 2,
+    _id: "2",
     img: "/Image/perfum-7.jpeg",
     scents: "Citrus Burst",
     name: "Lemon Zest Splash",
-    price: "22$",
+    price: 22,
     originalPrice: "29$",
     description:
       "A zesty and invigorating scent combining lemon and bergamot, perfect for a vibrant day.",
@@ -28,11 +28,11 @@ export const homeProductData = [
     vendor: "Citrus Grove",
   },
   {
-    id: 3,
+    _id: "3",
     img: "/Image/perfum-7.jpeg",
     scents: "Woody Harmony",
     name: "Cedarwood Serenity",
-    price: "35$",
+    price: 35,
     originalPrice: "42$",
     description:
       "A warm and earthy blend of cedarwood and sandalwood, great for a calming experience.",
@@ -41,11 +41,11 @@ export const homeProductData = [
     vendor: "Forest Aroma",
   },
   {
-    id: 4,
+    _id: "4",
     img: "/Image/perfum-7.jpeg",
     scents: "Spicy Charm",
     name: "Cinnamon Glow",
-    price: "27$",
+    price: 27,
     originalPrice: "34$",
     description:
       "A spicy and bold fragrance with notes of cinnamon and clove, perfect for cooler days.",
@@ -54,11 +54,11 @@ export const homeProductData = [
     vendor: "Spice Haven",
   },
   {
-    id: 5,
+    _id: "5",
     img: "/Image/perfum-7.jpeg",
     scents: "Fruity Delight",
     name: "Berry Bliss Mist",
-    price: "24$",
+    price: 24,
     originalPrice: "31$",
     description:
       "A sweet and juicy mix of berries and peach, ideal for a playful and carefree vibe.",
@@ -67,11 +67,11 @@ export const homeProductData = [
     vendor: "Fruitful Scents",
   },
   {
-    id: 6,
+    _id: "6",
     img: "/Image/perfum-7.jpeg",
     scents: "Herbal Freshness",
     name: "Mint Leaf Breeze",
-    price: "26$",
+    price: 26,
     originalPrice: "33$",
     description:
       "A crisp and refreshing scent with mint and eucalyptus, perfect for a clean start.",
@@ -80,11 +80,11 @@ export const homeProductData = [
     vendor: "Herb Garden",
   },
   {
-    id: 7,
+    _id: "7",
     img: "/Image/perfum-7.jpeg",
     scents: "Exotic Nights",
     name: "Amber Moonlight",
-    price: "32$",
+    price: 32,
     originalPrice: "40$",
     description:
       "A mysterious blend of amber and oud, designed for an enchanting night out.",
@@ -93,11 +93,11 @@ export const homeProductData = [
     vendor: "Mystic Essence",
   },
   {
-    id: 8,
+    _id: "8",
     img: "/Image/perfum-7.jpeg",
     scents: "Tropical Escape",
     name: "Coconut Paradise",
-    price: "29$",
+    price: 29,
     originalPrice: "36$",
     description:
       "A creamy and tropical scent with coconut and vanilla, evoking a beachside getaway.",

@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { StoreContext } from "../../StoreContext.jsx";
+import { StoreContext } from "../../StoreContext.jsx"; // Adjust the import path as needed
 
 const HomeProduct = () => {
   const { addToCart, homeProductData } = useContext(StoreContext);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleQuickAddClick = (product) => {
     setSelectedProduct(product);
@@ -21,14 +21,14 @@ const HomeProduct = () => {
   };
 
   const handleAddToCart = () => {
-    addToCart(selectedProduct.name, quantity); // Add selected product and quantity to cart
-    closePopup(); // Close the pop-up after adding to cart
+    addToCart(selectedProduct._id, quantity); // Pass the selected quantity
+    closePopup();
   };
 
   const closePopup = () => {
     setShowPopup(false);
     setSelectedProduct(null);
-    setQuantity(1); // Reset quantity to 1
+    setQuantity(1);
   };
 
   const handleDecrement = () => {
@@ -189,7 +189,7 @@ const HomeProduct = () => {
 
               {/* Quantity Selector and Add to Cart Button */}
               <div className="flex sm:flex-row flex-col sm:items-center gap-3 mb-4">
-                <div className="flex justify-center px-3 sm:px-8 py-1 items-center bg-white border-2 border-[#000] gap-4 sm:gap-2 rounded-full">
+                <div  className="flex justify-center px-3 sm:px-8 py-1 items-center bg-white border-2 border-[#000] gap-4 sm:gap-2 rounded-full">
                   <button
                     onClick={handleDecrement}
                     className="hover:text-[#ff7be5] text-lg"
