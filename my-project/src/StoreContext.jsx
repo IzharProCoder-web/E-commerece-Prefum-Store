@@ -6,6 +6,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
+  const [favoriteItems, setFavoriteItems] = useState({}); // State for favorite items
 
   const addToCart = (itemId, quantity) => {
     setCartItems((prev) => ({
@@ -41,12 +42,38 @@ const StoreContextProvider = (props) => {
     return totalAmount;
   };
 
+  
+// Add to favorites
+const addToFavorites = (itemId) => {
+  setFavoriteItems((prev) => ({
+    ...prev,
+    [itemId]: true, // Mark the item as favorite
+  }));
+  console.log("Added to favorites:", itemId); // Debugging
+  console.log("Updated favoriteItems:", { ...favoriteItems, [itemId]: true }); // Debugging
+};
+
+// Remove from favorites
+const removeFromFavorites = (itemId) => {
+  setFavoriteItems((prev) => {
+    const updatedFavorites = { ...prev };
+    delete updatedFavorites[itemId]; // Remove the item from favorites
+    return updatedFavorites;
+  });
+  console.log("Removed from favorites:", itemId); // Debugging
+  console.log("Updated favoriteItems:", { ...favoriteItems, [itemId]: undefined }); // Debugging
+};
+
+
   const contextValue = {
     homeProductData,
     cartItems,
     addToCart,
     removeFromCart,
     getTotalCartAmount,
+    favoriteItems, // Add favoriteItems to context
+    addToFavorites, // Add addToFavorites to context
+    removeFromFavorites, // Add removeFromFavorites to context
   };
 
   return (

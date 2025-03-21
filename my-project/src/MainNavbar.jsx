@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom"; // Import NavLink instead of Link
+import { StoreContext } from "./StoreContext";
 
-const Navbar = ({ setShowLoginPop }) => {
+const MainNavbar = ({ setShowLoginPop }) => {
+  const { cartItems, favoriteItems } = useContext(StoreContext); // Access cartItems and favoriteItems from context
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Calculate the total number of items in the cart
+  const getTotalCartItems = () => {
+    return Object.values(cartItems).reduce((total, quantity) => total + quantity, 0);
+  };
+
+  // Calculate the total number of favorite items
+  const getTotalFavoriteItems = () => {
+    return Object.keys(favoriteItems).length;
+  };
 
   const openSearchBar = () => {
     setIsSearchBarOpen(true);
@@ -20,7 +32,8 @@ const Navbar = ({ setShowLoginPop }) => {
   return (
     <>
       {/* Desktop Navbar */}
-      <nav className="hidden justify-evenly items-center  bg-transparent hover:bg-white duration-1000 md:flex">
+      <nav className="hidden justify-evenly items-center bg-transparent hover:bg-white duration-1000 md:flex">
+        {/* Search Bar */}
         <div
           className={`absolute top-0 bg-white w-full text-center py-[24px] px-[250px] z-30 ${
             isSearchBarOpen ? "block slide-down" : "hidden slide-up"
@@ -72,14 +85,12 @@ const Navbar = ({ setShowLoginPop }) => {
         </div>
 
         {/* Logo */}
-        <div className="w-[100px] p-0 m-0 ">
+        <div className="w-[100px] p-0 m-0">
           <Link to="/">
-       
-        <div className="flex items-center justify-center  relative">
-       <img src="./Image/FAIZZIFY-LOGO.png" alt="Logo " className=" " />
-       <p className="absolute top-[40%] left-[70px] font-bold"> FAIZIFFY</p>
-       </div>
-           
+            <div className="flex items-center justify-center relative">
+              <img src="./Image/FAIZZIFY-LOGO.png" alt="Logo" className="" />
+              <p className="absolute top-[40%] left-[70px] font-bold">FAIZIFFY</p>
+            </div>
           </Link>
         </div>
 
@@ -89,7 +100,7 @@ const Navbar = ({ setShowLoginPop }) => {
             <li>
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Home
               </NavLink>
@@ -97,25 +108,23 @@ const Navbar = ({ setShowLoginPop }) => {
             <li>
               <NavLink
                 to="/about"
-                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 About Us
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/shop"
-                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Shop
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/contact"
-                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Contact Us
               </NavLink>
@@ -123,7 +132,7 @@ const Navbar = ({ setShowLoginPop }) => {
             <li>
               <NavLink
                 to="/faq"
-                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 FAQ
               </NavLink>
@@ -183,8 +192,9 @@ const Navbar = ({ setShowLoginPop }) => {
               >
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
+              {/* Display the total number of favorite items */}
               <div className="absolute bg-pink-300 -bottom-[5px] -right-[8px] w-[20px] rounded-[50%] text-center text-white">
-                <p>0</p>
+                <p>{getTotalFavoriteItems()}</p>
               </div>
             </Link>
           </div>
@@ -207,8 +217,9 @@ const Navbar = ({ setShowLoginPop }) => {
                 <path d="M3 6h18" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
-              <div className="absolute bottom-[3px] -right-[20px] w-[20px] rounded-[50%] text-center ">
-                <p>(0)</p>
+              {/* Display the total number of items in the cart */}
+              <div className="absolute bottom-[1px] -right-[20px] w-[20px] rounded-[50%] text-center">
+                <p>({getTotalCartItems()})</p>
               </div>
             </Link>
           </div>
@@ -216,14 +227,14 @@ const Navbar = ({ setShowLoginPop }) => {
       </nav>
 
       {/* Mobile Navbar */}
-      <nav className="md:hidden flex  justify-between items-center p-[20px] bg-transparent hover:bg-white duration-1000 ">
+      <nav className="md:hidden flex justify-between items-center p-[20px] bg-transparent hover:bg-white duration-1000">
         {/* Search Bar */}
         <div
-          className={`absolute  top-0 left-0 bg-white w-full text-center py-[24px]  z-30 ${
+          className={`absolute top-0 left-0 bg-white w-full text-center py-[24px] z-30 ${
             isSearchBarOpen ? "block slide-down" : "hidden slide-up"
           }`}
         >
-          <div className="flex  items-center gap-[70px]">
+          <div className="flex items-center gap-[70px]">
             <p className="text-[#41414199] text-[12px]">
               WHAT ARE YOU LOOKING FOR?
             </p>
@@ -245,7 +256,7 @@ const Navbar = ({ setShowLoginPop }) => {
             </svg>
           </div>
 
-          <div className="flex  items-center border-b-[1px] border-[#41414199] py-1">
+          <div className="flex items-center border-b-[1px] border-[#41414199] py-1">
             <input
               type="text"
               placeholder="Search"
@@ -328,7 +339,7 @@ const Navbar = ({ setShowLoginPop }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="cursor-pointer "
+            className="cursor-pointer"
           >
             <circle cx="12" cy="8" r="5" />
             <path d="M20 21a8 8 0 0 0-16 0" />
@@ -350,14 +361,15 @@ const Navbar = ({ setShowLoginPop }) => {
               >
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
+              {/* Display the total number of favorite items */}
               <div className="absolute bg-pink-300 -bottom-[5px] -right-[8px] w-[20px] rounded-[50%] text-center text-white">
-                <p>0</p>
+                <p>{getTotalFavoriteItems()}</p>
               </div>
             </div>
           </Link>
 
           <div className="relative">
-            <Link to="cart">
+            <Link to="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -368,27 +380,28 @@ const Navbar = ({ setShowLoginPop }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="cursor-pointer "
+                className="cursor-pointer"
               >
                 <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
                 <path d="M3 6h18" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
+              {/* Display the total number of items in the cart */}
+              <div className="absolute bottom-[0px] -right-[20px] w-[20px] rounded-[50%] text-center">
+                <p>({getTotalCartItems()})</p>
+              </div>
             </Link>
-            <div className="absolute bottom-[0px] -right-[20px] w-[20px] rounded-[50%] text-center ">
-              <p>(0)</p>
-            </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
         <div
           className={`absolute top-[0px] left-0 w-full bg-white transition-all z-30 duration-1000 ${
-            isMobileMenuOpen ? "  block slide-down" : " slide-up hidden"
-          } `}
+            isMobileMenuOpen ? "block slide-down" : "slide-up hidden"
+          }`}
         >
           {/* Cross SVG to Close Mobile Menu */}
-          <div className="flex justify-end p-[20px] ">
+          <div className="flex justify-end p-[20px]">
             <svg
               onClick={toggleMobileMenu}
               xmlns="http://www.w3.org/2000/svg"
@@ -408,7 +421,7 @@ const Navbar = ({ setShowLoginPop }) => {
           </div>
 
           {/* Navigation Links */}
-          <ul className="flex flex-col gap-[20px] p-[20px] ">
+          <ul className="flex flex-col gap-[20px] p-[20px]">
             <li>
               <NavLink
                 to="/"
@@ -418,7 +431,6 @@ const Navbar = ({ setShowLoginPop }) => {
                 Home
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/about"
@@ -428,7 +440,6 @@ const Navbar = ({ setShowLoginPop }) => {
                 About Us
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/shop"
@@ -438,7 +449,6 @@ const Navbar = ({ setShowLoginPop }) => {
                 Shop
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/contact"
@@ -448,11 +458,10 @@ const Navbar = ({ setShowLoginPop }) => {
                 Contact
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/faq"
-                className={({ isActive }) => (isActive ? "active" : "")} // Add active class
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 FAQ
               </NavLink>
@@ -464,4 +473,4 @@ const Navbar = ({ setShowLoginPop }) => {
   );
 };
 
-export default Navbar;
+export default MainNavbar;

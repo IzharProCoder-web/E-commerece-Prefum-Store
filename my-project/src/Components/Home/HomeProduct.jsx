@@ -9,7 +9,8 @@ import "swiper/css/navigation";
 import { StoreContext } from "../../StoreContext.jsx"; // Adjust the import path as needed
 
 const HomeProduct = () => {
-  const { addToCart, homeProductData } = useContext(StoreContext);
+  const { addToCart, homeProductData, addToFavorites, favoriteItems,removeFromFavorites } =
+    useContext(StoreContext);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -41,6 +42,17 @@ const HomeProduct = () => {
     setQuantity(quantity + 1);
   };
 
+  // Handle heart icon click
+  const handleHeartClick = (productId) => {
+    if (favoriteItems[productId]) {
+      // If already in favorites, remove it
+      removeFromFavorites(productId);
+    } else {
+      // If not in favorites, add it
+      addToFavorites(productId);
+    }
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="text-center mb-12">
@@ -53,24 +65,27 @@ const HomeProduct = () => {
       </div>
 
       {/* Swiper Slider */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto  sm:px-6 lg:px-8">
         <Swiper
           modules={[Navigation]}
           navigation={{
             nextEl: ".prev-btn",
             prevEl: ".next-btn",
           }}
-          spaceBetween={20}
+          spaceBetween={10}
           slidesPerView={1}
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: 2.5,
             },
             768: {
-              slidesPerView: 3,
+              slidesPerView: 3.5,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: 4.5,
+            },
+            1200: {
+              slidesPerView: 4.5,
             },
           }}
           loop={true}
@@ -88,14 +103,18 @@ const HomeProduct = () => {
                   {/* Heart Icon (Favorite Button) */}
                   <button
                     className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
-                    onClick={() => navigate("/fav")} // Redirect to /fav page
+                    onClick={() => handleHeartClick(data._id)} // Handle heart icon click
                   >
-                    <CiHeart className="text-xl text-gray-600 hover:text-[#ff7be5]" />
+                    <CiHeart
+                      className={`text-xl ${
+                        favoriteItems[data._id] ? "text-[#ff7be5]" : "text-gray-600"
+                      }`}
+                    />
                   </button>
                   {/* Quick Add Button */}
                   <button
                     onClick={() => handleQuickAddClick(data)}
-                    className="absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-4 md:px-4 px-5 py-2 rounded-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white"
+                    className="absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-white text-black xl:px-4 md:px-4 px-3 py-2 rounded-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 hover:bg-[#ff7be5] hover:text-white"
                   >
                     + Quick Add
                   </button>
@@ -108,7 +127,7 @@ const HomeProduct = () => {
                     {data.name}
                   </p>
                   <p className="text-[#666] font-[Jost] text-[18px] mt-[10px]">
-                    {data.price}
+                    ${data.price}
                   </p>
                 </div>
               </div>
