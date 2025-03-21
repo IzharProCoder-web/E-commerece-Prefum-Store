@@ -128,7 +128,7 @@ const HomeProduct = () => {
       {/* Pop-up Window */}
       {showPopup && (
         <div className="fixed inset-0 bg-[#333333f1] flex items-center justify-center z-50 p-4">
-          <div className="bg-white py-8 rounded-lg max-w-4xl w-full mx-4 sm:mx-8 relative flex flex-col sm:flex-row sm:h-auto h-[600px] overflow-y-auto sm:overflow-visible">
+          <div className="bg-white py-8  max-w-4xl w-full mx-4 sm:mx-8 relative flex flex-col sm:flex-row sm:h-auto h-[600px] overflow-y-auto sm:overflow-visible">
             {/* Close Button */}
             <button
               onClick={closePopup}
@@ -204,12 +204,15 @@ const HomeProduct = () => {
                     +
                   </button>
                 </div>
-                <button
-                  onClick={handleAddToCart}
-                  className="w-full sm:w-auto bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300"
-                >
-                  ADD TO CART
-                </button>
+             <Link to="/cart">
+             <button
+                
+                onClick={handleAddToCart}
+                className="w-full sm:w-auto bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300"
+              >
+                ADD TO CART
+              </button>
+             </Link>
               </div>
 
               {/* Free Shipping Message */}
