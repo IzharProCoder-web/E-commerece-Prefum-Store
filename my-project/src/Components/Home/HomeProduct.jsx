@@ -107,13 +107,14 @@ const HomeProduct = () => {
                   />
                   {/* Heart Icon (Favorite Button) */}
                   <button
+                  
                     className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
                     onClick={() => handleHeartClick(data._id)} // Handle heart icon click
                   >
                     <CiHeart
                       className={`text-xl ${
                         favoriteItems[data._id]
-                          ? "text-[#ff7be5]"
+                          ? "text-[#ff00cc] "
                           : "text-gray-600"
                       }`}
                     />
@@ -215,7 +216,7 @@ const HomeProduct = () => {
 
               {/* Quantity Selector and Add to Cart Button */}
               <div className="flex sm:flex-row flex-col sm:items-center gap-3 mb-4">
-                <div className="flex justify-center px-3 sm:px-8 py-1 items-center bg-white border-2 border-[#000] gap-4 sm:gap-2 rounded-full">
+                <div className="flex justify-center px-3 sm:px-8 py-1 items-center bg-white border-2 border-[#0000000a] gap-4 sm:gap-2 ">
                   <button
                     onClick={handleDecrement}
                     className="hover:text-[#ff7be5] text-lg"
@@ -233,7 +234,7 @@ const HomeProduct = () => {
                 <Link to="/cart">
                   <button
                     onClick={handleAddToCart}
-                    className="w-full sm:w-auto bg-[#ff7be5] text-white px-6 py-2 rounded-full hover:bg-[#e56acf] transition-colors duration-300"
+                    className="w-full sm:w-auto bg-[#ff7be5] text-white px-6 py-2  hover:bg-[#875c7f] transition-colors duration-300"
                   >
                     ADD TO CART
                   </button>

@@ -13,7 +13,7 @@ const AddToCart = () => {
       {/* Cart Items */}
       <div className="bg-white p-6 rounded-lg shadow-lg">
         {/* Table Header */}
-        <div className="flex items-center text-[#666] text-sm sm:text-base py-4 border-b font-medium">
+        <div className="hidden sm:flex items-center text-[#666] text-sm sm:text-base py-4 border-b font-medium">
           <div className="flex-1">Item</div>
           <div className="flex-1">Title</div>
           <div className="flex-1">Price</div>
@@ -28,35 +28,41 @@ const AddToCart = () => {
             return (
               <div
                 key={index}
-                className="flex items-center py-4 border-b hover:bg-gray-50 transition-colors duration-200"
+                className="flex flex-col sm:flex-row items-center py-4 border-b hover:bg-gray-50 transition-colors duration-200"
               >
                 {/* Product Image */}
-                <div className="flex-1">
+                <div className="flex-1 mb-4 sm:mb-0">
                   <img
                     src={data.img}
-                    className="w-[50px] h-[50px] object-cover rounded-lg"
+                    className="w-[80px] h-[80px] object-cover rounded-lg"
                     alt={data.name}
                   />
                 </div>
 
                 {/* Product Title */}
-                <div className="flex-1">
-                  <p className="font-medium">{data.name}</p>
+                <div className="flex-1 mb-4 sm:mb-0">
+                  <p className="font-medium text-center sm:text-left">
+                    {data.name}
+                  </p>
                 </div>
 
                 {/* Product Price */}
-                <div className="flex-1">
-                  <p className="text-gray-700">${data.price}</p>
+                <div className="flex-1 mb-4 sm:mb-0">
+                  <p className="text-gray-700 text-center sm:text-left">
+                    ${data.price}
+                  </p>
                 </div>
 
                 {/* Quantity */}
-                <div className="flex-1">
-                  <p className="text-gray-700">{cartItems[data._id]}</p>
+                <div className="flex-1 mb-4 sm:mb-0">
+                  <p className="text-gray-700 text-center sm:text-left">
+                    {cartItems[data._id]}
+                  </p>
                 </div>
 
                 {/* Total Price */}
-                <div className="flex-1">
-                  <p className="text-gray-700 font-semibold">
+                <div className="flex-1 mb-4 sm:mb-0">
+                  <p className="text-gray-700 font-semibold text-center sm:text-left">
                     ${data.price * cartItems[data._id]}
                   </p>
                 </div>

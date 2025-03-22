@@ -20,69 +20,7 @@ const OrderPage = () => {
 
       {/* Order Details */}
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Left Side - Order Items */}
-        <div className="flex-1 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">
-            Your Order
-          </h2>
-          <div className="space-y-6">
-            {homeProductData.map((data, index) => {
-              if (cartItems[data._id] > 0) {
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between py-4 border-b border-gray-100"
-                  >
-                    {/* Product Image and Name */}
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={data.img}
-                        className="w-16 h-16 object-cover rounded-lg"
-                        alt={data.name}
-                      />
-                      <div>
-                        <p className="font-medium text-gray-800">{data.name}</p>
-                        <p className="text-sm text-gray-500">{data.scents}</p>
-                      </div>
-                    </div>
-
-                    {/* Quantity and Price */}
-                    <div className="flex items-center gap-4">
-                      <p className="text-gray-700">x{cartItems[data._id]}</p>
-                      <p className="text-gray-800 font-semibold">
-                        ${data.price * cartItems[data._id]}
-                      </p>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-          </div>
-
-          {/* Order Totals */}
-          <div className="mt-8">
-            <div className="flex justify-between text-gray-700">
-              <p>SubTotal</p>
-              <p className="font-semibold">$ {getTotalCartAmount()}</p>
-            </div>
-            <hr className="my-4 border-gray-100" />
-            <div className="flex justify-between text-gray-700">
-              <p>Delivery fee </p>
-              <p className="font-semibold">
-                ${getTotalCartAmount() === 0 ? 0 : 2}
-              </p>
-            </div>
-            <hr className="my-4 border-gray-100" />
-            <div className="flex justify-between text-gray-800">
-              <p className="font-semibold">Total</p>
-              <p className="font-semibold">
-                $ {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side - Shipping and Payment */}
+        {/* Left Side - Shipping and Payment */}
         <div className="flex-1 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
           <h2 className="text-2xl font-semibold mb-6 text-gray-800">
             Shipping Information
@@ -167,6 +105,68 @@ const OrderPage = () => {
           >
             Place Order
           </button>
+        </div>
+
+        {/* Right Side - Order Items */}
+        <div className="flex-1 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+          <h2 className="text-2xl font-semibold mb-6 text-gray-800">
+            Your Order
+          </h2>
+          <div className="space-y-6">
+            {homeProductData.map((data, index) => {
+              if (cartItems[data._id] > 0) {
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-4 border-b border-gray-100"
+                  >
+                    {/* Product Image and Name */}
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={data.img}
+                        className="w-16 h-16 object-cover rounded-lg"
+                        alt={data.name}
+                      />
+                      <div>
+                        <p className="font-medium text-gray-800">{data.name}</p>
+                        <p className="text-sm text-gray-500">{data.scents}</p>
+                      </div>
+                    </div>
+
+                    {/* Quantity and Price */}
+                    <div className="flex items-center gap-4">
+                      <p className="text-gray-700">x{cartItems[data._id]}</p>
+                      <p className="text-gray-800 font-semibold">
+                        ${data.price * cartItems[data._id]}
+                      </p>
+                    </div>
+                  </div>
+                );
+              }
+            })}
+          </div>
+
+          {/* Order Totals */}
+          <div className="mt-8">
+            <div className="flex justify-between text-gray-700">
+              <p>SubTotal</p>
+              <p className="font-semibold">$ {getTotalCartAmount()}</p>
+            </div>
+            <hr className="my-4 border-gray-100" />
+            <div className="flex justify-between text-gray-700">
+              <p>Delivery fee </p>
+              <p className="font-semibold">
+                ${getTotalCartAmount() === 0 ? 0 : 2}
+              </p>
+            </div>
+            <hr className="my-4 border-gray-100" />
+            <div className="flex justify-between text-gray-800">
+              <p className="font-semibold">Total</p>
+              <p className="font-semibold">
+                $ {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
