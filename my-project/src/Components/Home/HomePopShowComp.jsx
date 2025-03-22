@@ -13,11 +13,11 @@ const HomePopShowComp = ({ onClose }) => {
 
   return (
     <div className='fixed  h-screen inset-0 z-[9999999] flex items-center justify-center bg-[#00000066]'>
-      <div className='bg-white max-w-3xl w-full flex relative'>
+      <div className='bg-white max-w-3xl w-full h-[480px] flex relative '>
         {/* Close Button */}
         <button
           onClick={onClose}
-          className='absolute top-0 right-2 text-[#fff] hover:text-gray-700 focus:outline-none'
+          className='absolute top-0 right-2 text-[#fff] hover:text-[#ff7be5] focus:outline-none'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -36,7 +36,7 @@ const HomePopShowComp = ({ onClose }) => {
         </button>
 
         {/* Left Section - Text and Form */}
-        <div className='flex-1 p-8'>
+        <div className='flex-1 flex flex-col justify-center py-8 px-10'>
           <h3 className='text-2xl font-bold mb-4'>Stay Styled, Stay Informed!</h3>
           <p className='text-gray-600 mb-6'>
             Unlock Beauty Secrets and Exclusive Offers! Join our fashion community and be the first to know about the latest trends, exclusive collections, and insider deals.

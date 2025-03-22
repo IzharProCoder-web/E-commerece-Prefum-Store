@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopUp(true);
-    }, 1000); // 5000 milliseconds = 5 seconds
+    }, 5000); // 5000 milliseconds = 5 seconds
 
     // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
