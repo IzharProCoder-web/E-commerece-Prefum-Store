@@ -21,7 +21,7 @@ const HomePopShowComp = ({ onClose }) => {
       >
         {/* Main container with responsive sizing */}
         <motion.div
-          className='bg-white w-full max-w-3xl max-h-[90vh] md:h-[480px] flex flex-col md:flex-row relative rounded-lg overflow-hidden'
+          className='bg-white w-full max-w-3xl max-h-[90vh] md:h-[480px] flex flex-col md:flex-row relative  overflow-hidden'
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
