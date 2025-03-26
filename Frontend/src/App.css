@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+body {
+  font-family: "Jost", sans-serif;
+  border: none;
+}
+
+.londrina-outline-regular {
+  font-family: "Londrina Outline", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+/* animation  */
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide {
+  display: inline-block;
+  animation: slide 200s linear infinite;
+}
+
+
+/* Slide Down Animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Apply the animations */
+.slide-down {
+  animation: slideDown 0.5s ease-in-out forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out forwards;
+}
+/* Wipe Up Animation */
+@keyframes textWipeUp {
+  from {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.textWipeUp {
+  animation: textWipeUp 0.5s ease-in-out forwards;
+  transition: all 2s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+.animate-fade-in-out {
+  animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+
+
+
+
+/* utility  */
+li,a,button,img, svg, input {
+  cursor: pointer;
+}
+
+input, button {
+  outline: none;
+}
+
+.active {
+  color: #da28ba;
+  border-bottom: 1px #da28ba solid;
+  transition: all 10s ease-in;
+}
+
+nav li:hover {
+  border-bottom: 1px #da28ba solid;
+
+}
