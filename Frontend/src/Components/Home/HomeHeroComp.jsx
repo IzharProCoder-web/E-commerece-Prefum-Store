@@ -76,7 +76,7 @@ const HomeHeroComp = () => {
             <motion.h1
               initial={{ y: 50, opacity: 0 }}
               animate={controls}
-              className="text-start font-bold text-[30px] md:text-[40px] xl:text-[50px] text-[#222222]"
+              className="text-start font-bold text-[40px] md:text-[40px] xl:text-[50px] text-[#222222]"
             >
               Discover new scents for every occasion.
             </motion.h1>
@@ -90,7 +90,7 @@ const HomeHeroComp = () => {
             <motion.button
               initial={{ y: 50, opacity: 0 }}
               animate={controls}
-              className="mt-[30px] flex gap-[10px] items-center bg-[#ff7be5] hover:bg-[#b373a6] px-[15px] py-[5px] sm:px-[30px] sm:py-[10px] rounded-[10px] text-white font-bold"
+              className="mt-[30px] flex gap-[10px] items-center bg-[#ff7be5]  hover:bg-[#b373a6] px-[30px] py-[10px] rounded-[10px] text-white font-bold"
             >
               Explore <MoveRight className="w-5 h-5" />
             </motion.button>
