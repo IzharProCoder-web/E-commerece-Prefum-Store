@@ -7,6 +7,7 @@ import {
   FaSearch,
   FaFilter,
   FaShoppingCart,
+  FaPlus,
 } from "react-icons/fa";
 import { GiPerfumeBottle, GiPriceTag } from "react-icons/gi";
 import { StoreContext } from "../StoreContext";
@@ -137,19 +138,19 @@ const Shop = () => {
       )}
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-pink-100 to-purple-100 py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+      <div className="bg-gradient-to-r from-pink-100 to-purple-100 py-12 md:py-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
           Premium Fragrance Collection
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
           Discover scents that define your personality and style
         </p>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         {/* Controls */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-8 gap-4">
           <div className="relative w-full md:w-96">
             <FaSearch className="absolute left-3 top-3 text-gray-400" />
             <input
@@ -164,14 +165,14 @@ const Shop = () => {
             />
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 w-full md:w-auto">
             <select
               value={sortOption}
               onChange={(e) => {
                 setSortOption(e.target.value);
                 setCurrentPage(1); // Reset to first page when sorting changes
               }}
-              className="px-4 py-2 border rounded-lg bg-white"
+              className="px-4 py-2 border rounded-lg bg-white w-full md:w-auto"
             >
               <option value="featured">Featured</option>
               <option value="price-low">Price: Low to High</option>
@@ -182,23 +183,23 @@ const Shop = () => {
 
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-4 py-2 bg-white border rounded-lg hover:bg-gray-50"
+              className="flex items-center gap-2 px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 w-full md:w-auto justify-center"
             >
-              <FaFilter /> Filters
+              <FaFilter /> <span className="hidden md:inline">Filters</span>
             </button>
           </div>
         </div>
 
         {/* Filters Panel */}
         {showFilters && (
-          <div className="bg-white p-6 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white p-4 md:p-6 rounded-lg shadow-md mb-6 md:mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {/* Price Filter */}
             <div>
               <h3 className="font-semibold mb-3 flex items-center gap-2">
                 <GiPriceTag /> Price Range
               </h3>
               <div className="flex items-center gap-4 mb-2">
-                <span>${priceRange[0]}</span>
+                <span className="text-sm md:text-base">${priceRange[0]}</span>
                 <input
                   type="range"
                   min="0"
@@ -210,7 +211,7 @@ const Shop = () => {
                   }}
                   className="w-full"
                 />
-                <span>${priceRange[1]}</span>
+                <span className="text-sm md:text-base">${priceRange[1]}</span>
               </div>
             </div>
 
@@ -230,7 +231,7 @@ const Shop = () => {
                         category
                       )
                     }
-                    className={`px-3 py-1 text-sm rounded-full ${
+                    className={`px-2 py-1 text-xs md:text-sm rounded-full ${
                       selectedCategories.includes(category)
                         ? "bg-pink-500 text-white"
                         : "bg-gray-100 hover:bg-gray-200"
@@ -252,7 +253,7 @@ const Shop = () => {
                     onClick={() =>
                       toggleFilter(selectedSizes, setSelectedSizes, size)
                     }
-                    className={`px-3 py-1 text-sm rounded-full ${
+                    className={`px-2 py-1 text-xs md:text-sm rounded-full ${
                       selectedSizes.includes(size)
                         ? "bg-pink-500 text-white"
                         : "bg-gray-100 hover:bg-gray-200"
@@ -267,7 +268,7 @@ const Shop = () => {
         )}
 
         {/* Product Count */}
-        <div className="mb-4 text-gray-600">
+        <div className="mb-4 text-gray-600 text-sm md:text-base">
           Showing {indexOfFirstProduct + 1}-{Math.min(indexOfLastProduct, filteredPerfumes.length)} of {filteredPerfumes.length} products
           {(selectedCategories.length > 0 ||
             selectedSizes.length > 0 ||
@@ -279,23 +280,23 @@ const Shop = () => {
                 setPriceRange([0, 300]);
                 setCurrentPage(1);
               }}
-              className="ml-4 text-pink-500 hover:underline"
+              className="ml-2 md:ml-4 text-pink-500 hover:underline text-sm md:text-base"
             >
               Clear all filters
             </button>
           )}
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {/* Product Grid - Changed to 2 columns on mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {currentProducts.map((perfume) => (
             <div
               key={perfume._id}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group"
+              className="bg-white rounded-lg md:rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group"
             >
               <div className="relative">
                 {/* Product Image */}
-                <div className="h-64 overflow-hidden relative">
+                <div className="h-48 md:h-64 overflow-hidden relative">
                   <img
                     src={perfume.img}
                     alt={perfume.name}
@@ -305,7 +306,7 @@ const Shop = () => {
                   <div className="absolute inset-0 bg-[#00000039] bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <button
                       onClick={() => navigate(`/product/${perfume._id}`)}
-                      className="bg-white text-pink-500 px-4 py-2 rounded-lg font-medium"
+                      className="bg-white text-pink-500 px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base"
                     >
                       Quick View
                     </button>
@@ -313,20 +314,20 @@ const Shop = () => {
                 </div>
 
                 {/* Badges */}
-                <div className="absolute top-2 left-2 flex gap-2">
+                <div className="absolute top-2 left-2 flex gap-1">
                   {perfume.isNew && (
-                    <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                    <span className="bg-green-500 text-white text-xs px-1 py-0.5 md:px-2 md:py-1 rounded-full">
                       NEW
                     </span>
                   )}
                   {perfume.isBestSeller && (
-                    <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
-                      BESTSELLER
+                    <span className="bg-pink-500 text-white text-xs px-1 py-0.5 md:px-2 md:py-1 rounded-full">
+                      BEST
                     </span>
                   )}
                   {perfume.stock < 10 && (
-                    <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">
-                      LOW STOCK
+                    <span className="bg-red-500 text-white text-xs px-1 py-0.5 md:px-2 md:py-1 rounded-full">
+                      LOW
                     </span>
                   )}
                 </div>
@@ -334,7 +335,7 @@ const Shop = () => {
                 {/* Favorite Button */}
                 <button
                   onClick={() => toggleFavorite(perfume._id)}
-                  className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors"
+                  className="absolute top-2 right-2 p-1 md:p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors"
                   aria-label={
                     favoriteItems[perfume._id] 
                       ? "Remove from favorites" 
@@ -342,37 +343,37 @@ const Shop = () => {
                   }
                 >
                   {favoriteItems[perfume._id] ? (
-                    <FaHeart className="text-pink-500" />
+                    <FaHeart className="text-pink-500 text-sm md:text-base" />
                   ) : (
-                    <FaRegHeart className="text-gray-600 hover:text-pink-500" />
+                    <FaRegHeart className="text-gray-600 hover:text-pink-500 text-sm md:text-base" />
                   )}
                 </button>
               </div>
 
               {/* Product Info */}
-              <div className="p-4">
+              <div className="p-3 md:p-4">
                 <div className="flex justify-between items-start mb-1">
                   <h3
                    onClick={() => navigate(`/product/${perfume._id}`)}
-                   className="font-semibold text-lg hover:text-pink-500 transition-colors cursor-pointer">
+                   className="font-semibold text-base md:text-lg hover:text-pink-500 transition-colors cursor-pointer line-clamp-1">
                     {perfume.name}
                   </h3>
-                  <span className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
+                  <span className="bg-gray-100 text-gray-800 text-xs px-1 md:px-2 py-0.5 md:py-1 rounded">
                     {perfume.size}
                   </span>
                 </div>
 
-                <p className="text-gray-500 text-sm mb-2">{perfume.scents}</p>
-                <p className="text-gray-600 text-sm mb-2 line-clamp-2">
+                <p className="text-gray-500 text-xs md:text-sm mb-1 md:mb-2 line-clamp-1">{perfume.scents}</p>
+                <p className="text-gray-600 text-xs md:text-sm mb-2 line-clamp-2">
                   {perfume.description}
                 </p>
 
                 {/* Rating */}
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-2 md:mb-3">
                   {[...Array(5)].map((_, i) => (
                     <FaStar
                       key={i}
-                      className={`text-sm ${
+                      className={`text-xs md:text-sm ${
                         i < Math.floor(perfume.rating)
                           ? "text-yellow-400"
                           : "text-gray-300"
@@ -386,18 +387,23 @@ const Shop = () => {
 
                 <div className="flex justify-between items-center">
                   <div>
-                    <span className="font-bold text-lg">${perfume.price}</span>
+                    <span className="font-bold text-base md:text-lg">${perfume.price}</span>
                     {perfume.originalPrice && (
-                      <span className="ml-2 text-gray-400 text-sm line-through">
+                      <span className="ml-1 md:ml-2 text-gray-400 text-xs md:text-sm line-through">
                         ${perfume.originalPrice}
                       </span>
                     )}
                   </div>
                   <button
                     onClick={() => handleAddToCart(perfume._id)}
-                    className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg text-sm transition-colors flex items-center gap-1"
+                    className="bg-pink-500 hover:bg-pink-600 text-white p-1 md:p-2 rounded-lg transition-colors flex items-center justify-center"
+                    aria-label="Add to cart"
                   >
-                    <FaShoppingCart size={14} /> Add
+                    {/* Show + icon on mobile, "Add" text on desktop */}
+                    <span className="md:hidden"><FaPlus size={12} /></span>
+                    <span className="hidden md:flex items-center gap-1">
+                      <FaShoppingCart size={14} /> Add
+                    </span>
                   </button>
                 </div>
               </div>
@@ -427,7 +433,7 @@ const Shop = () => {
 
         {/* Pagination */}
         {filteredPerfumes.length > productsPerPage && (
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-6 md:mt-8">
             <nav className="flex items-center gap-1">
               <button 
                 onClick={() => paginate(currentPage - 1)} 
