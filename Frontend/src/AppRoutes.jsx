@@ -13,9 +13,6 @@ import MainNavbar from "./MainNavbar";
 import FAQ from "./Pages/FAQ";
 import Footer from "./Components/Footer";
 import Order from "./Pages/Order";
-import HomeDiscount from "../src/Components/Home/HomeDiscount";
-import ProtectedRoute from "./Components/ProtectedRoute";
-
 
 const AppRoutes = () => {
   const [showLoginPop, setShowLoginPop] = useState(false);
@@ -25,70 +22,16 @@ const AppRoutes = () => {
       <TopNavbar />
       <MainNavbar setShowLoginPop={setShowLoginPop} />
       <Routes>
-        {/* Public routes - anyone can access */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-
-        {/* Protected routes - need login */}
-        <Route
-          path="/shop"
-          element={
-            <ProtectedRoute>
-              <Shop />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <ProtectedRoute>
-              <Product />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <ProtectedRoute>
-              <Contact />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute>
-              <AddToCart />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/fav"
-          element={
-            <ProtectedRoute>
-              <AddToFav />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/faq"
-          element={
-            <ProtectedRoute>
-              <FAQ />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/order"
-          element={
-            <ProtectedRoute>
-              <Order />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<AddToCart />} />
+        <Route path="/fav" element={<AddToFav />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/order" element={<Order />} />
       </Routes>
-      <HomeDiscount />
-
       <Footer />
     </>
   );

@@ -21,7 +21,7 @@ const AboutUsHeroComp = () => {
           Crafting Memories with Every Scent
         </h3>
         <Link to="/shop">
-          <button className="bg-[#ff7be5] hover:bg-[#ce72bc] duration-500 text-white py-2 md:py-3 px-6 md:px-10 rounded-full">
+          <button className="bg-[#000] duration-500 text-white py-2 md:py-3 px-6 md:px-10 rounded-full">
             Shop Now
           </button>
         </Link>

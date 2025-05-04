@@ -37,7 +37,7 @@ const ContactHeroComp = () => {
           Embrace the allure of timeless fashion with our collection of modern classics. From essential basics to statement pieces, redefine elegance with a contemporary touch.
         </p>
         <Link to="/shop">
-          <button className="bg-[#ff7be5] hover:bg-[#ce72bc] duration-500 text-white py-2 md:py-3 px-6 md:px-10 rounded-full">
+          <button className="bg-[#000]  duration-500 text-white py-2 md:py-3 px-6 md:px-10 rounded-full">
             Discover More
           </button>
         </Link>

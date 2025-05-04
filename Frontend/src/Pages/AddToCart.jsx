@@ -132,7 +132,7 @@ const AddToCart = () => {
                 <p className="text-gray-600 mb-4 text-lg">Your cart is empty</p>
                 <Link
                   to="/shop"
-                  className="inline-block px-6 py-2 bg-[#ff7be5] text-white rounded-lg hover:bg-[#e56acf] transition-colors duration-200"
+                  className="inline-block px-6 py-2 bg-[#000] text-white rounded-lg transition-colors duration-200"
                 >
                   Continue Shopping
                 </Link>
@@ -145,7 +145,7 @@ const AddToCart = () => {
             <div className="mt-6">
               <Link
                 to="/shop"
-                className="flex items-center text-[#ff7be5] hover:text-[#e56acf] transition-colors duration-200"
+                className="flex items-center text-[#000] transition-colors duration-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +225,7 @@ const AddToCart = () => {
 
               <button
                 onClick={() => navigate("/order")}
-                className="w-full py-3 bg-gradient-to-r from-[#ff7be5] to-[#e56acf] text-white font-medium rounded-lg hover:opacity-90 transition-opacity duration-200 shadow-md"
+                className="w-full py-3 bg-black text-white font-medium rounded-lg hover:opacity-90 transition-opacity duration-200 shadow-md"
               >
                 Proceed to Checkout
               </button>
@@ -234,7 +234,7 @@ const AddToCart = () => {
                 or{" "}
                 <Link
                   to="/shop"
-                  className="text-[#ff7be5] hover:text-[#e56acf] font-medium"
+                  className="text-[#000]  font-medium"
                 >
                   Continue Shopping
                 </Link>

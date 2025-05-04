@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState } from "react";
-import { homeProductData, shopProductData } from "./data.js"; // Adjust the import path as needed
+import { homeProductData, shopProductData, bestSellerProductData } from "./data.js"; // Adjust the import path as needed
 
 export const StoreContext = createContext(null);
 
@@ -65,6 +65,7 @@ const removeFromFavorites = (itemId) => {
 
 const contextValue = {
   homeProductData,
+  bestSellerProductData,
   shopProductData,
   cartItems,
   addToCart,

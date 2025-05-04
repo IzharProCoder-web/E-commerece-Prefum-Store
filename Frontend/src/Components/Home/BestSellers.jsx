@@ -7,10 +7,10 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { StoreContext } from "../../StoreContext.jsx";
 
-const HomeProduct = () => {
+const BestSellers = () => {
   const {
     addToCart,
-    homeProductData,
+    bestSellerProductData,
     addToFavorites,
     favoriteItems,
     removeFromFavorites,
@@ -65,13 +65,11 @@ const HomeProduct = () => {
   };
 
   useEffect(() => {
-    if (homeProductData) {
-      // After the component mounts or homeProductData updates,
-      // calculate the maximum height of the product info sections.
+    if (bestSellerProductData) {
       const heights = productInfoRefs.current.map(ref => ref?.offsetHeight || 0);
       setMaxHeight(Math.max(...heights));
     }
-  }, [homeProductData]);
+  }, [bestSellerProductData]);
 
   return (
     <section className="py-8 sm:py-12 lg:py-16 bg-white relative font-sans">
@@ -85,7 +83,7 @@ const HomeProduct = () => {
 
       <div className="mb-8 px-4 max-w-7xl mx-auto">
         <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-sans ml-12 tracking-tight">
-          OUR BEST SELLER
+          TOP PICKS
         </h3>
       </div>
 
@@ -131,7 +129,7 @@ const HomeProduct = () => {
           loop={false}
           className="!overflow-visible !mx-auto"
         >
-          {homeProductData?.map((data, index) => (
+          {bestSellerProductData?.map((data, index) => (
             <SwiperSlide key={index} className="!w-[130px] sm:!w-[200px] mb-8">
               <div className="w-full h-[300px] sm:h-[350px] group relative max-w-[180px]">
                 {/* Image Container */}
@@ -183,11 +181,12 @@ const HomeProduct = () => {
                       </h3>
                     </Link>
                   </div>
-                  <p className="text-red-500 text-sm sm:text-lg mt-1 sm:mt-2 font-medium">
-                    ${data.price.toFixed(2)}
-                  </p>
-
-                  <del className="text-red-500 text-sm ">${data.originalPrice}</del>
+                  <div className="flex items-center justify-center">
+                    <p className="text-red-500 text-sm sm:text-lg mt-1 sm:mt-2 font-medium">
+                      ${data.price.toFixed(2)}
+                    </p>
+                    <del className="text-red-500 text-sm ml-2">${data.originalPrice}</del>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
@@ -264,8 +263,7 @@ const HomeProduct = () => {
                   >
                     <FaMinus />
                   </button>
-                  <span className="px-3 sm:px-4 py-1.5 sm:py-2 text-base
-                    sm:text-lg font-medium w-10 sm:w-12 text-center">
+                  <span className="px-3 sm:px-4 py-1.5 sm:py-2 text-base sm:text-lg font-medium w-10 sm:w-12 text-center">
                     {quantity}
                   </span>
                   <button
@@ -282,6 +280,7 @@ const HomeProduct = () => {
               <button
                 onClick={handleAddToCart}
                 className="w-full bg-black text-white py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition-colors mb-3 sm:mb-4 font-medium flex items-center justify-center text-sm sm:text-base"
+                aria-label={`Add ${selectedProduct.name} to cart`}
               >
                 Add to Cart - ${(selectedProduct.price * quantity).toFixed(2)}
               </button>
@@ -323,10 +322,11 @@ const HomeProduct = () => {
       )}
 
       {/* See More Products Button */}
-      <div className="flex justify-center mt-5 sm:mt-20  px-4 ">
+      <div className="flex justify-center mt-5 sm:mt-20 px-4">
         <button
           onClick={() => navigate("/shop")}
           className="bg-black text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium shadow-md hover:shadow-lg text-sm sm:text-base"
+          aria-label="Explore shop collection"
         >
           Explore Our Collection
         </button>
@@ -372,4 +372,4 @@ const HomeProduct = () => {
   );
 };
 
-export default HomeProduct;
+export default BestSellers;

@@ -109,7 +109,7 @@ const ContactQuestionComp = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-[#ff7be5] hover:bg-[#ce72bc] text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300"
+              className="bg-[#000]  text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300"
             >
               SEND
             </button>

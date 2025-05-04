@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "./StoreContext";
+import "../src/Navbar.css";
 
 const MainNavbar = ({ setShowLoginPop }) => {
   const { cartItems, favoriteItems } = useContext(StoreContext);
@@ -10,7 +11,6 @@ const MainNavbar = ({ setShowLoginPop }) => {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
 
-  // Calculate totals
   const getTotalCartItems = () =>
     Object.values(cartItems).reduce((total, qty) => total + qty, 0);
   const getTotalFavoriteItems = () => Object.keys(favoriteItems).length;
@@ -27,26 +27,20 @@ const MainNavbar = ({ setShowLoginPop }) => {
     navigate("/");
   };
 
-  // Handle protected route clicks
-  const handleProtectedLinkClick = (e, path) => {
-    if (!isLoggedIn) {
-      e.preventDefault();
-      setShowLoginPop(true);
-      // Store the intended path to redirect after login
-      localStorage.setItem("redirectAfterLogin", path);
-    }
-  };
-
   return (
     <>
       {/* Desktop Navbar */}
-      <nav className="hidden md:flex justify-evenly items-center bg-transparent hover:bg-white transition-all duration-500">
+      <nav className="hidden md:flex justify-evenly items-center bg-black">
         {/* Logo */}
         <div className="w-[100px] p-0 m-0">
           <Link to="/">
             <div className="flex items-center justify-center relative">
-              <img src="../Image/FAIZZIFY-LOGO.png" alt="Logo" className="" />
-              <p className="absolute top-[40%] left-[70px] font-bold text-lg text-gray-800">
+              <img
+                src="../Image/FAIZZIFY-LOGO.png"
+                alt="Logo"
+                className="filter invert brightness-0"
+              />
+              <p className="absolute top-[40%] left-[70px] font-bold text-lg text-white">
                 FAIZIFFY
               </p>
             </div>
@@ -56,40 +50,46 @@ const MainNavbar = ({ setShowLoginPop }) => {
         {/* Navigation Links */}
         <div>
           <ul className="flex gap-8 uppercase text-2xl">
-            {["/", "/about", "/shop", "/contact", "/faq"].map((path, idx) => (
-              <li key={idx}>
-                {path === "/" || path === "/about" ? (
-                  // Public routes (Home and About)
-                  <NavLink
-                    to={path}
-                    className={({ isActive }) =>
-                      `text-sm font-medium transition-colors duration-200 ${
-                        isActive
-                          ? "text-[#ff7be5]"
-                          : "text-gray-700 hover:text-[#ff7be5]"
-                      }`
-                    }
-                  >
-                    {path === "/" ? "Home" : path.slice(1).replace("-", " ")}
-                  </NavLink>
-                ) : (
-                  // Protected routes
-                  <NavLink
-                    to={path}
-                    onClick={(e) => handleProtectedLinkClick(e, path)}
-                    className={({ isActive }) =>
-                      `text-sm font-medium transition-colors duration-200 ${
-                        isActive
-                          ? "text-[#ff7be5]"
-                          : "text-gray-700 hover:text-[#ff7be5]"
-                      }`
-                    }
-                  >
-                    {path.slice(1).replace("-", " ")}
-                  </NavLink>
-                )}
-              </li>
-            ))}
+            <li className="hover:no-underline">
+              <Link
+                to="/"
+                className="text-sm font-medium text-white no-underline hover:no-underline"
+              >
+                Home
+              </Link>
+            </li>
+             <li className="hover:no-underline">
+              <Link
+                to="/about"
+                className="text-sm font-medium text-white no-underline hover:no-underline"
+              >
+                About
+              </Link>
+            </li>
+            <li className="hover:no-underline">
+              <Link
+                to="/shop"
+                className="text-sm font-medium text-white no-underline hover:no-underline"
+              >
+                Shop
+              </Link>
+            </li>
+            <li className="hover:no-underline">
+              <Link
+                to="/contact"
+                className="text-sm font-medium text-white no-underline hover:no-underline"
+              >
+                Contact
+              </Link>
+            </li>
+            <li className="hover:no-underline">
+              <Link
+                to="/faq"
+                className="text-sm font-medium text-white no-underline hover:no-underline"
+              >
+                Faq
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -110,7 +110,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="cursor-pointer text-gray-600 hover:text-[#ff7be5] transition-colors"
+              className="cursor-pointer text-white"
             >
               <circle cx="12" cy="8" r="5" />
               <path d="M20 21a8 8 0 0 0-16 0" />
@@ -119,7 +119,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
             {isLoggedIn && (
               <span
                 onClick={toggleDropdown}
-                className="text-sm font-semibold text-gray-800 hover:text-[#ff7be5] cursor-pointer transition-colors"
+                className="text-sm font-semibold text-white cursor-pointer"
               >
                 {user.name || "User"}
               </span>
@@ -127,9 +127,9 @@ const MainNavbar = ({ setShowLoginPop }) => {
 
             {/* Dropdown Menu */}
             {isLoggedIn && isDropdownOpen && (
-              <div className="absolute right-0 top-10 w-52 bg-white border border-gray-100 rounded-xl shadow-xl z-50 animate-fadeIn">
-                <div className="flex justify-between items-center px-4 py-2 border-b border-gray-100">
-                  <span className="text-sm font-semibold text-gray-800">
+              <div className="absolute right-0 top-10 w-52 bg-black border border-gray-700 rounded-xl shadow-xl z-50 animate-fadeIn">
+                <div className="flex justify-between items-center px-4 py-2">
+                  <span className="text-sm font-semibold text-white">
                     {user.name || "User"}
                   </span>
                   <svg
@@ -143,18 +143,18 @@ const MainNavbar = ({ setShowLoginPop }) => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="cursor-pointer text-gray-600 hover:text-[#ff7be5] transition-colors"
+                    className="cursor-pointer text-white"
                   >
                     <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
+                    <path d="M6 6 12 12" />
                   </svg>
                 </div>
-                <ul className="py-2 ">
+                <ul className="py-2">
                   <li>
                     <Link
                       to="/order"
                       onClick={() => setIsDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ff7be5] transition-colors"
+                      className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
                     >
                       My Orders
                     </Link>
@@ -162,7 +162,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   <li>
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ff7be5] transition-colors"
+                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800"
                     >
                       Logout
                     </button>
@@ -174,10 +174,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
 
           {/* Favorite Icon */}
           <div className="relative">
-            <Link
-              to="/fav"
-              onClick={(e) => handleProtectedLinkClick(e, "/fav")}
-            >
+            <Link to="/fav">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -188,7 +185,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="cursor-pointer text-gray-600 hover:text-[#ff7be5] transition-colors"
+                className="cursor-pointer text-white"
               >
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
@@ -202,10 +199,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
 
           {/* Cart Icon */}
           <div className="relative">
-            <Link
-              to="/cart"
-              onClick={(e) => handleProtectedLinkClick(e, "/cart")}
-            >
+            <Link to="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -216,14 +210,14 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="cursor-pointer text-gray-600 hover:text-[#ff7be5] transition-colors"
+                className="cursor-pointer text-white"
               >
                 <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
                 <path d="M3 6h18" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
               {getTotalCartItems() > 0 && (
-                <div className="absolute bg-gray-200 -bottom-1 -right-2 w-5 h-5 rounded-full text-center text-gray-800 text-xs flex items-center justify-center">
+                <div className="absolute bg-gray-200 -bottom-1 -right-2 w-5 h-5 rounded-full text-center text-white text-xs flex items-center justify-center">
                   {getTotalCartItems()}
                 </div>
               )}
@@ -233,16 +227,16 @@ const MainNavbar = ({ setShowLoginPop }) => {
       </nav>
 
       {/* Mobile Navbar */}
-      <nav className="md:hidden flex justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-20">
+      <nav className="md:hidden flex justify-between items-center p-4 bg-black sticky top-0 z-20">
         {/* Logo */}
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <img
               src="./Image/FAIZZIFY-LOGO.png"
               alt="Logo"
-              className="w-10 h-10"
+              className="w-10 h-10 filter invert brightness-0"
             />
-            <span className="font-bold text-lg text-gray-800">FAIZIFFY</span>
+            <span className="font-bold text-lg text-white">FAIZIFFY</span>
           </Link>
         </div>
 
@@ -266,7 +260,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-gray-600 hover:text-[#ff7be5] transition-colors"
+                className="text-white"
               >
                 <circle cx="12" cy="8" r="5" />
                 <path d="M20 21a8 8 0 0 0-16 0" />
@@ -276,7 +270,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
             {isLoggedIn && (
               <span
                 onClick={toggleDropdown}
-                className="text-xs font-semibold text-gray-800 hover:text-[#ff7be5] cursor-pointer transition-colors truncate max-w-[80px]"
+                className="text-xs font-semibold text-white cursor-pointer truncate max-w-[80px]"
               >
                 {user.name || "User"}
               </span>
@@ -284,9 +278,9 @@ const MainNavbar = ({ setShowLoginPop }) => {
 
             {/* Mobile Dropdown */}
             {isLoggedIn && isDropdownOpen && (
-              <div className="absolute right-0 top-10 w-52 bg-white border border-gray-100 rounded-xl shadow-xl z-50 animate-fadeIn">
-                <div className="flex justify-between items-center px-4 py-2 border-b border-gray-100">
-                  <span className="text-sm font-semibold text-gray-800">
+              <div className="absolute right-0 top-10 w-52 bg-black border border-gray-700 rounded-xl shadow-xl z-50 animate-fadeIn">
+                <div className="flex justify-between items-center px-4 py-2">
+                  <span className="text-sm font-semibold text-white">
                     {user.name || "User"}
                   </span>
                   <svg
@@ -300,10 +294,10 @@ const MainNavbar = ({ setShowLoginPop }) => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="cursor-pointer text-gray-600 hover:text-[#ff7be5] transition-colors"
+                    className="cursor-pointer text-white"
                   >
                     <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
+                    <path d="M6 6 12 12" />
                   </svg>
                 </div>
                 <ul className="py-2">
@@ -311,7 +305,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                     <Link
                       to="/order"
                       onClick={() => setIsDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ff7be5] transition-colors"
+                      className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
                     >
                       My Orders
                     </Link>
@@ -319,7 +313,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   <li>
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ff7be5] transition-colors"
+                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800"
                     >
                       Logout
                     </button>
@@ -330,11 +324,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
           </div>
 
           {/* Favorite Icon (Mobile) */}
-          <Link
-            to="/fav"
-            onClick={(e) => handleProtectedLinkClick(e, "/fav")}
-            className="p-1 relative"
-          >
+          <Link to="/fav" className="p-1 relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -345,7 +335,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-gray-600 hover:text-[#ff7be5] transition-colors"
+              className="text-white"
             >
               <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
             </svg>
@@ -357,11 +347,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
           </Link>
 
           {/* Cart Icon (Mobile) */}
-          <Link
-            to="/cart"
-            onClick={(e) => handleProtectedLinkClick(e, "/cart")}
-            className="p-1 relative"
-          >
+          <Link to="/cart" className="p-1 relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -372,14 +358,14 @@ const MainNavbar = ({ setShowLoginPop }) => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-gray-600 hover:text-[#ff7be5] transition-colors"
+              className="text-white"
             >
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
               <path d="M3 6h18" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
             {getTotalCartItems() > 0 && (
-              <span className="absolute -top-1 -right-1 bg-gray-200 text-gray-800 text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-gray-200 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {getTotalCartItems()}
               </span>
             )}
@@ -397,7 +383,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-gray-600 hover:text-[#ff7be5] transition-colors"
+              className="text-white"
             >
               <line x1="4" y1="12" x2="20" y2="12" />
               <line x1="4" y1="6" x2="20" y2="6" />
@@ -408,49 +394,76 @@ const MainNavbar = ({ setShowLoginPop }) => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-40 pt-16 overflow-y-auto transition-all duration-300">
-            <div className="p-4">
+          <div className="fixed inset-0 bg-black z-40 pt-16 overflow-y-auto">
+            <div className="p-4 relative">
+              {/* Close Icon */}
+              <button
+                onClick={toggleMobileMenu}
+                className="absolute top-4 right-4 p-2"
+                aria-label="Close mobile menu"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="M6 6 18 18" />
+                </svg>
+              </button>
               <ul className="space-y-4 uppercase">
-                {["/", "/about", "/shop", "/contact", "/faq"].map(
-                  (path, idx) => (
-                    <li key={idx}>
-                      {path === "/" || path === "/about" ? (
-                        <NavLink
-                          to={path}
-                          className={({ isActive }) =>
-                            `block py-2 px-4 rounded-lg text-sm font-medium ${
-                              isActive
-                                ? "bg-gray-100 text-[#ff7be5]"
-                                : "text-gray-700 hover:bg-gray-50 hover:text-[#ff7be5]"
-                            }`
-                          }
-                          onClick={toggleMobileMenu}
-                        >
-                          {path === "/"
-                            ? "Home"
-                            : path.slice(1).replace("-", " ")}
-                        </NavLink>
-                      ) : (
-                        <NavLink
-                          to={path}
-                          onClick={(e) => {
-                            handleProtectedLinkClick(e, path);
-                            toggleMobileMenu();
-                          }}
-                          className={({ isActive }) =>
-                            `block py-2 px-4 rounded-lg text-sm font-medium ${
-                              isActive
-                                ? "bg-gray-100 text-[#ff7be5]"
-                                : "text-gray-700 hover:bg-gray-50 hover:text-[#ff7be5]"
-                            }`
-                          }
-                        >
-                          {path.slice(1).replace("-", " ")}
-                        </NavLink>
-                      )}
-                    </li>
-                  )
-                )}
+                <li className="hover:no-underline">
+                  <Link
+                    to="/"
+                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                    onClick={toggleMobileMenu}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="hover:no-underline">
+                  <Link
+                    to="/about"
+                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                    onClick={toggleMobileMenu}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li className="hover:no-underline">
+                  <Link
+                    to="/shop"
+                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                    onClick={toggleMobileMenu}
+                  >
+                    Shop
+                  </Link>
+                </li>
+                <li className="hover:no-underline">
+                  <Link
+                    to="/contact"
+                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                    onClick={toggleMobileMenu}
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li className="hover:no-underline">
+                  <Link
+                    to="/faq"
+                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                    onClick={toggleMobileMenu}
+                  >
+                    Faq
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

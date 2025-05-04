@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const LoginPop = ({ setShowLoginPop }) => {
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ const LoginPop = ({ setShowLoginPop }) => {
   const [currState, setCurrState] = useState("Login");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +18,8 @@ const LoginPop = ({ setShowLoginPop }) => {
     setLoading(true);
 
     const url = currState === "Login"
-      ? "http://localhost:8080/perfume/login"
-      : "http://localhost:8080/perfume/signup";
+      ? "http://localhost:8000/perfume/login"
+      : "http://localhost:8000/perfume/signup";
     const payload = currState === "Login"
       ? { email, password }
       : { name, email, password };
@@ -28,18 +28,11 @@ const LoginPop = ({ setShowLoginPop }) => {
       const response = await axios.post(url, payload);
       if (response.data.success) {
         if (currState === "Login") {
-          // Store user data
           localStorage.setItem("token", response.data.data.token);
           localStorage.setItem("user", JSON.stringify(response.data.data));
-          
-          // Close popup and redirect
           setShowLoginPop(false);
-          navigate('/shop'); // Redirect to shop page after login
-          
-          // Optional: Show success message
           alert("Login successful!");
         } else {
-          // Handle signup success
           alert("Signup successful! Please log in.");
           setCurrState("Login");
           setName("");

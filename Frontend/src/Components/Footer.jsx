@@ -14,23 +14,23 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#FAF5F2] text-black py-12 px-4">
+    <footer className="bg-black text-white py-12 px-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <address className="space-y-4 not-italic">
             <h3 className="text-xl font-bold">FAZIFFY</h3>
-            <p className="text-black">
+            <p className="text-white">
               58 White St., New York
               <br />
               <a
                 href="mailto:cosmecos_company@mail.com"
-                className="hover:text-white"
+                className="hover:text-purple-400"
               >
                 cosmecos_company@mail.com
               </a>
               <br />
-              <a href="tel:+180098745698" className="hover:text-white">
+              <a href="tel:+180098745698" className="hover:text-purple-400">
                 +1 (800) 987 456 98
               </a>
             </p>
@@ -41,13 +41,13 @@ const Footer = () => {
             <h3 className="text-xl font-bold">Useful Links</h3>
             <div className="grid grid-cols gap-4">
               <div className="space-y-2 flex flex-col">
-                <a href="/" className="text-black " aria-label="Home">
+                <a href="/" className="text-white hover:text-purple-400" aria-label="Home">
                   Home Pages
                 </a>
-                <a href="/contact " className=" " aria-label="Other Pages">
+                <a href="/contact" className="text-white hover:text-purple-400" aria-label="Other Pages">
                   Contact Pages
                 </a>
-                <p className=" " aria-label="Portfolio">
+                <p className="text-white hover:text-purple-400" aria-label="Portfolio">
                   Portfolio
                 </p>
               </div>
@@ -65,13 +65,13 @@ const Footer = () => {
                 type="email"
                 name="email"
                 placeholder="Your Email"
-                className="p-2 rounded   ring-2 ring-purple-500 placeholder:text-zinc-950"
+                className="p-2 rounded bg-black text-white border border-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
                 aria-label="Email for subscription"
                 required
               />
               <button
                 type="submit"
-                className="bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition-colors duration-300"
+                className="bg-black text-white py-2 px-4 rounded border border-white hover:bg-gray-900 hover:border-purple-400 transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-purple-400"
                 aria-label="Subscribe"
               >
                 SUBSCRIBE
@@ -81,12 +81,12 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-black text-black mt-8 pt-8 text-center ">
+        <div className="border-t border-gray-700 text-white mt-8 pt-8 text-center">
           <p>© 2025 Faziffy Theme</p>
           <p>
             <a
               href="/terms"
-              className="hover:text-white"
+              className="hover:text-purple-400"
               aria-label="Terms and Conditions"
             >
               Terms and Conditions

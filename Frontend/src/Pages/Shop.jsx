@@ -396,7 +396,7 @@ const Shop = () => {
                   </div>
                   <button
                     onClick={() => handleAddToCart(perfume._id)}
-                    className="bg-pink-500 hover:bg-pink-600 text-white p-1 md:p-2 rounded-lg transition-colors flex items-center justify-center"
+                    className="bg-black  text-white p-1 md:p-2 rounded-lg transition-colors flex items-center justify-center"
                     aria-label="Add to cart"
                   >
                     {/* Show + icon on mobile, "Add" text on desktop */}
