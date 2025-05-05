@@ -18,8 +18,8 @@ const LoginPop = ({ setShowLoginPop }) => {
     setLoading(true);
 
     const url = currState === "Login"
-      ? "http://localhost:8000/perfume/login"
-      : "http://localhost:8000/perfume/signup";
+      ? "https://e-commerece-prefum-store-gomd.vercel.app/"
+      : "https://e-commerece-prefum-store-gomd.vercel.app/";
     const payload = currState === "Login"
       ? { email, password }
       : { name, email, password };
