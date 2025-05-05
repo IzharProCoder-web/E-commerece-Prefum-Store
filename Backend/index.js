@@ -14,8 +14,8 @@ app.get("/ping", (req, res) => {
 });
 
 app.use(bodyParser.json());
-// app.use(cors());
-app.use(cors({ origin: 'https://e-commerece-prefum-store.vercel.app/' }));
+app.use(cors());
+// app.use(cors({ origin: 'https://e-commerece-prefum-store.vercel.app/' }));
 app.use('/perfume', perfumeRouter )
 
 app.listen(PORT, () => {
