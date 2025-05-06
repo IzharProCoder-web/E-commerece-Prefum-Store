@@ -44,7 +44,7 @@ const AppRoutes = () => {
                 </p>
                 <a
                   href="/"
-                  className="px-4 py-2 bg-brown-600 text-white rounded hover:bg-brown-700 transition"
+                  className="px-4 py-2 bg-brown-600 text-black rounded hover:bg-brown-700 transition"
                 >
                   Go Back Home
                 </a>
