@@ -83,9 +83,9 @@ const HomeProduct = () => {
         </Link>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center overflow-scroll     ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex md:justify-center items-center overflow-x-scroll     ">
         {homeProductData.map((data, index) => (
-          <div key={data._id} className="inline-block  w-full h-[300px] sm:h-[350px] group relative max-w-[180px] mx-2">
+          <div key={data._id} className="inline-block  w-full h-[350px] sm:h-[450px] group relative max-w-[180px] mx-2">
             <div className="relative overflow-hidden h-[180px] sm:h-[300px] rounded-lg shadow-md">
               <Link to={`/product/${data._id}`} className="block h-full">
                 <img
@@ -128,7 +128,7 @@ const HomeProduct = () => {
                   </h3>
                 </Link>
               </div>
-              <p className="text-red-500 text-sm sm:text-lg mt-1 sm:mt-2 font-medium">
+              <p className="text-red-500 text-sm sm:text-lg m sm:mt-1 mt font-medium">
                 Rs.{data.price}
               </p>
               <del className="text-red-500 text-sm">Rs.{data.originalPrice}</del>
