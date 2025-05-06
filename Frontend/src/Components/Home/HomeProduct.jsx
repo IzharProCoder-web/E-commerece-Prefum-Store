@@ -74,7 +74,7 @@ const HomeProduct = () => {
         </div>
       )}
 
-      <div className="mb-8 px-4 max-w-7xl mx-auto flex  justify-between">
+      <div className="mb-8 px-4 max-w-7xl mx-auto flex justify-between">
         <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-sans md:ml-12 tracking-tight text-black">
           SUMMER DEALS
         </h3>
@@ -83,10 +83,10 @@ const HomeProduct = () => {
         </Link>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex md:justify-center items-center overflow-x-scroll     ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex md:justify-center items-center overflow-x-scroll">
         {homeProductData.map((data, index) => (
-          <div key={data._id} className="inline-block  w-full h-[350px] sm:h-[450px] group relative max-w-[180px] mx-2">
-            <div className="relative overflow-hidden h-[180px] sm:h-[300px] rounded-lg shadow-md">
+          <div key={data._id} className="inline-block w-full h-[350px] sm:h-[450px] group relative max-w-[180px] mx-2">
+            <div className="overflow-hidden h-[180px] sm:h-[300px] rounded-lg shadow-md">
               <Link to={`/product/${data._id}`} className="block h-full">
                 <img
                   src={data.img}
@@ -95,22 +95,21 @@ const HomeProduct = () => {
                 />
               </Link>
               <button
-                className="absolute top-2 sm:top-3 right-2 sm:right-3 p-2 bg-white/80 rounded-full shadow-sm hover:bg-white transition-all duration-300 hover:scale-110"
+                onClick={() => handleQuickAddClick(data)}
+                className="flex justify-center items-center text-white absolute bg-red-500/80 w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] top-0 right-0 rounded-full shadow-md hover:bg-red-600 hover:scale-105 transition-all duration-300"
+              >
+                <FaPlus size={14} />
+              </button>
+              <button
+                className="flex justify-center items-center text-white absolute bg-red-500/80 w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] top-[32px] lg:top-[32px] right-0 rounded-full shadow-md hover:bg-red-600 hover:scale-105 transition-all duration-300"
                 onClick={() => handleHeartClick(data._id)}
                 aria-label={favoriteItems[data._id] ? "Remove from favorites" : "Add to favorites"}
               >
                 {favoriteItems[data._id] ? (
-                  <FaHeart className="text-lg sm:text-xl text-pink-500" />
+                  <FaHeart size={14} />
                 ) : (
-                  <FaRegHeart className="text-lg sm:text-xl text-gray-600 hover:text-pink-500" />
+                  <FaRegHeart size={14} />
                 )}
-              </button>
-              <button
-                onClick={() => handleQuickAddClick(data)}
-                className="absolute bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center text-[10px] sm:text-[13px] text-white bg-black p-[2px] sm:px-1 py-1 rounded-lg transition-all duration-300 opacity-100 group-hover:opacity-100"
-              >
-                <FaPlus className="sm:mr-1" size={12} />
-                Quick Add
               </button>
             </div>
             <div
@@ -226,7 +225,7 @@ const HomeProduct = () => {
         </div>
       )}
 
-      <div className="flex justify-center mt-8 sm:mt-20 px-4">
+      <div className="flex justify-center mt-8 sm:mt-5 px-4">
         <button
           onClick={() => navigate("/shop")}
           className="bg-black text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium shadow-md hover:shadow-lg text-sm sm:text-base"
@@ -245,17 +244,39 @@ const HomeProduct = () => {
         .animate-fadeInOut {
           animation: fadeInOut 2s ease-in-out forwards;
         }
-        @media (max-width: 767px) {
-          .group:hover .absolute.bottom-3 {
-            opacity: 1 !important;
-          }
+        /* Default: Icons visible on smaller screens */
+        .absolute.top-0.right-0,
+        .absolute.top-[44px].right-0,
+        .absolute.top-[32px].right-0 {
+          opacity: 1;
+          background-color: rgba(239, 68, 68, 0.8); /* bg-red-500/80 */
         }
-        @media (min-width: 768px) {
-          .absolute.bottom-3 {
+        .absolute.top-0.right-0:hover,
+        .absolute.top-[44px].right-0:hover,
+        .absolute.top-[32px].right-0:hover,
+        .absolute.top-0.right-0:active,
+        .absolute.top-[44px].right-0:active,
+        .absolute.top-[32px].right-0:active {
+          background-color: #dc2626; /* bg-red-600 */
+          transform: scale(0.95);
+        }
+        /* On laptops and larger (min-width: 1024px), icons hidden until hover */
+        @media (min-width: 1024px) {
+          .absolute.top-0.right-0,
+          .absolute.top-[32px].right-0 {
             opacity: 0;
+            background-color: rgba(239, 68, 68, 0.8); /* bg-red-500/80 */
           }
-          .group:hover .absolute.bottom-3 {
-            opacity: 1 !important;
+          .group:hover .absolute.top-0.right-0,
+          .group:hover .absolute.top-[32px].right-0 {
+            opacity: 1;
+          }
+          .absolute.top-0.right-0:hover,
+          .absolute.top-[32px].right-0:hover,
+          .absolute.top-0.right-0:active,
+          .absolute.top-[32px].right-0:active {
+            background-color: #dc2626; /* bg-red-600 */
+            transform: scale(0.95);
           }
         }
         .scrollbar-thin::-webkit-scrollbar {
