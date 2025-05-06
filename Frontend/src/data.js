@@ -2,11 +2,11 @@
 export const homeProductData = [
   {
     _id: "1",
-    img: "../Image/perfum-1.jpeg",
+    img: "../Image/perfum-2.jpg",
     scents: "The Legend",
     name: "Finest Classical - Modern Combo",
     price: 1290,
-    originalPrice: 1250,
+    originalPrice: 1400,
     description: "A classic and modern fragrance combo for all occasions.",
     sku: "SNS001",
     type: "Eau de Parfum",
@@ -18,7 +18,7 @@ export const homeProductData = [
     scents: "Merry Me",
     name: "#1 Women's Best Seller",
     price: 1690,
-    originalPrice: 1890,
+    originalPrice: 2090,
     description: "A top floral scent for women, perfect for special moments.",
     sku: "SNS002",
     type: "Perfume",
@@ -64,11 +64,11 @@ export const homeProductData = [
 export const bestSellerProductData = [
   {
     _id: "1",
-    img: "../Image/perfum-1.jpeg",
+    img: "../Image/perfum-2.jpg",
     scents: "The Legend",
     name: "Finest Classical - Modern Combo",
     price: 1290,
-    originalPrice: 1250,
+    originalPrice: 1400,
     description: "A classic and modern fragrance combo for all occasions.",
     sku: "SNS001",
     type: "Eau de Parfum",
@@ -80,7 +80,7 @@ export const bestSellerProductData = [
     scents: "Merry Me",
     name: "#1 Women's Best Seller",
     price: 1690,
-    originalPrice: 1890,
+    originalPrice: 2090,
     description: "A top floral scent for women, perfect for special moments.",
     sku: "SNS002",
     type: "Perfume",
@@ -123,6 +123,7 @@ export const bestSellerProductData = [
     vendor: "Scents N Stories",
   },
 ];
+
 
 
 

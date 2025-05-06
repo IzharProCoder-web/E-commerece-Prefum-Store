@@ -7,6 +7,8 @@ const MainNavbar = ({ setShowLoginPop }) => {
   const { cartItems, favoriteItems } = useContext(StoreContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const isLoggedIn = !!localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
@@ -18,19 +20,26 @@ const MainNavbar = ({ setShowLoginPop }) => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   const closeDropdown = () => setIsDropdownOpen(false);
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setIsDropdownOpen(false);
-    alert("Logged out successfully!");
-    navigate("/");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery("");
+      setIsSearchOpen(false); // Close search bar after submission
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setIsSearchOpen(false); // Close search bar when clearing
   };
 
   return (
     <>
       {/* Desktop Navbar */}
-      <nav className="hidden md:flex justify-evenly items-center bg-black">
+      <nav className="hidden md:flex justify-between items-center bg-black py-4 px-6 lg:px-12">
         {/* Logo */}
         <div className="w-[100px] p-0 m-0">
           <Link to="/">
@@ -48,53 +57,90 @@ const MainNavbar = ({ setShowLoginPop }) => {
         </div>
 
         {/* Navigation Links */}
-        <div>
-          <ul className="flex gap-8 uppercase text-2xl">
+        <div className="flex items-center gap-4 lg:gap-8">
+          <ul className="flex gap-4 lg:gap-8 uppercase text-sm font-medium">
             <li className="hover:no-underline">
-              <Link
-                to="/"
-                className="text-sm font-medium text-white no-underline hover:no-underline"
-              >
+              <Link to="/" className="text-white no-underline hover:no-underline">
                 Home
               </Link>
             </li>
-             <li className="hover:no-underline">
-              <Link
-                to="/about"
-                className="text-sm font-medium text-white no-underline hover:no-underline"
-              >
+            <li className="hover:no-underline">
+              <Link to="/about" className="text-white no-underline hover:no-underline">
                 About
               </Link>
             </li>
             <li className="hover:no-underline">
-              <Link
-                to="/shop"
-                className="text-sm font-medium text-white no-underline hover:no-underline"
-              >
+              <Link to="/shop" className="text-white no-underline hover:no-underline">
                 Shop
               </Link>
             </li>
             <li className="hover:no-underline">
-              <Link
-                to="/contact"
-                className="text-sm font-medium text-white no-underline hover:no-underline"
-              >
+              <Link to="/contact" className="text-white no-underline hover:no-underline">
                 Contact
               </Link>
             </li>
             <li className="hover:no-underline">
-              <Link
-                to="/faq"
-                className="text-sm font-medium text-white no-underline hover:no-underline"
-              >
+              <Link to="/faq" className="text-white no-underline hover:no-underline">
                 Faq
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* Icons and User Section */}
+        {/* Icons and Search Section */}
         <div className="flex gap-4 items-center relative">
+          {/* Search Bar */}
+          <div className="relative">
+            <form onSubmit={handleSearch} className="flex items-center">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products..."
+                className="bg-black text-white text-sm rounded-full pl-10 pr-10 py-2 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white hover:scale-105 transition-transform duration-200 w-[150px] md:w-[180px] lg:w-[200px] placeholder-gray-400"
+                aria-label="Search products"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white"
+                  aria-label="Clear search"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="M6 6 18 18" />
+                  </svg>
+                </button>
+              )}
+            </form>
+          </div>
+
           {/* Account Icon and User Name */}
           <div className="relative flex items-center gap-2">
             <svg
@@ -161,7 +207,13 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   </li>
                   <li>
                     <button
-                      onClick={handleLogout}
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("user");
+                        setIsDropdownOpen(false);
+                        alert("Logged out successfully!");
+                        navigate("/");
+                      }}
                       className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800"
                     >
                       Logout
@@ -240,8 +292,83 @@ const MainNavbar = ({ setShowLoginPop }) => {
           </Link>
         </div>
 
-        {/* Icons */}
-        <div className="flex items-center gap-3">
+        {/* Icons and Search */}
+        <div className="flex items-center gap-2">
+          {/* Search Bar (Mobile) */}
+          <div className="relative">
+            {isSearchOpen ? (
+              <form onSubmit={handleSearch} className="flex items-center">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search..."
+                  className="bg-black text-white text-xs rounded-full pl-8 pr-8 py-1 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white w-[120px] sm:w-[150px] placeholder-gray-400"
+                  autoFocus
+                  aria-label="Search products"
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white"
+                  aria-label="Close search"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="M6 6 18 18" />
+                  </svg>
+                </button>
+              </form>
+            ) : (
+              <button
+                onClick={toggleSearch}
+                className="p-1"
+                aria-label="Open search"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </button>
+            )}
+          </div>
+
           {/* Account Icon and User Name for Mobile */}
           <div className="relative flex items-center gap-1">
             <button
@@ -312,7 +439,13 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   </li>
                   <li>
                     <button
-                      onClick={handleLogout}
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("user");
+                        setIsDropdownOpen(false);
+                        alert("Logged out successfully!");
+                        navigate("/");
+                      }}
                       className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800"
                     >
                       Logout
@@ -391,84 +524,135 @@ const MainNavbar = ({ setShowLoginPop }) => {
             </svg>
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-black z-40 pt-16 overflow-y-auto">
-            <div className="p-4 relative">
-              {/* Close Icon */}
-              <button
-                onClick={toggleMobileMenu}
-                className="absolute top-4 right-4 p-2"
-                aria-label="Close mobile menu"
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black z-40 pt-16 overflow-y-auto">
+          <div className="p-4 relative">
+            {/* Close Icon */}
+            <button
+              onClick={toggleMobileMenu}
+              className="absolute top-4 right-4 p-2"
+              aria-label="Close mobile menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
               >
+                <path d="M18 6 6 18" />
+                <path d="M6 6 18 18" />
+              </svg>
+            </button>
+            {/* Search Bar in Mobile Menu */}
+            <div className="mb-4">
+              <form onSubmit={handleSearch} className="flex items-center">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products..."
+                  className="bg-black text-white text-sm rounded-full pl-10 pr-10 py-2 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white w-full placeholder-gray-400"
+                  aria-label="Search products"
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-white"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white"
                 >
-                  <path d="M18 6 6 18" />
-                  <path d="M6 6 18 18" />
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-              </button>
-              <ul className="space-y-4 uppercase">
-                <li className="hover:no-underline">
-                  <Link
-                    to="/"
-                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
-                    onClick={toggleMobileMenu}
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white"
+                    aria-label="Clear search"
                   >
-                    Home
-                  </Link>
-                </li>
-                <li className="hover:no-underline">
-                  <Link
-                    to="/about"
-                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
-                    onClick={toggleMobileMenu}
-                  >
-                    About
-                  </Link>
-                </li>
-                <li className="hover:no-underline">
-                  <Link
-                    to="/shop"
-                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
-                    onClick={toggleMobileMenu}
-                  >
-                    Shop
-                  </Link>
-                </li>
-                <li className="hover:no-underline">
-                  <Link
-                    to="/contact"
-                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
-                    onClick={toggleMobileMenu}
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li className="hover:no-underline">
-                  <Link
-                    to="/faq"
-                    className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
-                    onClick={toggleMobileMenu}
-                  >
-                    Faq
-                  </Link>
-                </li>
-              </ul>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 6 6 18" />
+                      <path d="M6 6 18 18" />
+                    </svg>
+                  </button>
+                )}
+              </form>
             </div>
+            <ul className="space-y-4 uppercase">
+              <li className="hover:no-underline">
+                <Link
+                  to="/"
+                  className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                  onClick={toggleMobileMenu}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="hover:no-underline">
+                <Link
+                  to="/about"
+                  className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                  onClick={toggleMobileMenu}
+                >
+                  About
+                </Link>
+              </li>
+              <li className="hover:no-underline">
+                <Link
+                  to="/shop"
+                  className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                  onClick={toggleMobileMenu}
+                >
+                  Shop
+                </Link>
+              </li>
+              <li className="hover:no-underline">
+                <Link
+                  to="/contact"
+                  className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                  onClick={toggleMobileMenu}
+                >
+                  Contact
+                </Link>
+              </li>
+              <li className="hover:no-underline">
+                <Link
+                  to="/faq"
+                  className="block py-2 px-4 rounded-lg text-sm font-medium text-white no-underline hover:bg-gray-800"
+                  onClick={toggleMobileMenu}
+                >
+                  Faq
+                </Link>
+              </li>
+            </ul>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </>
   );
 };
