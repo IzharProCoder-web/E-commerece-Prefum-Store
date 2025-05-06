@@ -122,7 +122,7 @@ const Product = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center text-gray-600 hover:text-[#ff7be5] transition-colors"
+          className="flex items-center text-gray-600 hover:text-black "
         >
           <FaArrowLeft className="mr-2" />
           Back to Products
@@ -154,7 +154,7 @@ const Product = () => {
                     />
                   </SwiperSlide>
                 ))}
-                <div className="product-prev-btn absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 p-3 shadow-md z-10 cursor-pointer hover:bg-white transition-all">
+                <div className="product-prev-btn absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 p-3 shadow-md z-10 rounded-full cursor-pointer hover:bg-white transition-all">
                   <FaChevronLeft className="text-gray-700" />
                 </div>
                 <div className="product-next-btn absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 p-3 rounded-full shadow-md z-10 cursor-pointer hover:bg-white transition-all">
@@ -174,7 +174,7 @@ const Product = () => {
                 {[product.img, product.img, product.img, product.img].map(
                   (img, index) => (
                     <SwiperSlide key={index}>
-                      <div className="border-2 border-transparent hover:border-[#ff7be5] rounded-md overflow-hidden transition-all cursor-pointer">
+                      <div className="border-2 border-transparent   overflow-hidden transition-all cursor-pointer">
                         <img
                           src={img}
                           alt={`Thumbnail ${index + 1}`}
@@ -191,8 +191,8 @@ const Product = () => {
           <div className="lg:w-1/2">
             <div className="mb-6">
               <div className="text-sm text-gray-500 mb-2">
-                <span className="hover:text-[#ff7be5] cursor-pointer">Home</span> /
-                <span className="hover:text-[#ff7be5] cursor-pointer"> Products</span> /
+                <span className=" cursor-pointer">Home</span> /
+                <span className=" cursor-pointer"> Products</span> /
                 <span> {product.name}</span>
               </div>
 
@@ -213,7 +213,7 @@ const Product = () => {
                   </span>
                 )}
                 {product.originalPrice && (
-                  <span className="ml-3 bg-[#ff7be5]/10 text-[#ff7be5] px-2 py-1 rounded text-sm font-medium">
+                  <span className="ml-3  text-[#000] px-2 py-1 rounded text-sm font-medium">
                     {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
                   </span>
                 )}
@@ -277,7 +277,7 @@ const Product = () => {
                 className={`flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-md transition-colors ${
                   isAddingToCart
                     ? "bg-green-500 text-white"
-                    : "bg-[#ff7be5] hover:bg-[#d45fb8] text-white"
+                    : "bg-[#000] hover:bg-[#d45fb8] text-white"
                 }`}
               >
                 {isAddingToCart ? (
@@ -319,7 +319,7 @@ const Product = () => {
               {["Facebook", "Twitter", "Pinterest"].map((social) => (
                 <button
                   key={social}
-                  className="text-gray-500 hover:text-[#ff7be5] transition-colors"
+                  className="text-gray-500 hover:text-[#000] transition-colors"
                 >
                   {social}
                 </button>
@@ -336,7 +336,7 @@ const Product = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`px-4 py-2 font-medium text-sm mr-2 ${
                   activeTab === tab
-                    ? "text-[#ff7be5] border-b-2 border-[#ff7be5]"
+                    ? "text-[#000] border-b-2 border-[#000]"
                     : "text-gray-500 hover:text-gray-700"
                 }`}
               >
@@ -450,7 +450,7 @@ const Product = () => {
                   </button>
                 </div>
                 <h4 className="font-medium text-gray-900 truncate">{item.name}</h4>
-                <p className="text-[#ff7be5] font-medium">${item.price}</p>
+                <p className="text-[red] font-medium">Rs {item.price}</p>
               </div>
             ))}
           </div>

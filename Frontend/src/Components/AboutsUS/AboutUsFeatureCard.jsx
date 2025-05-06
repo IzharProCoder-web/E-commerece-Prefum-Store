@@ -17,7 +17,7 @@ const FeatureCard = ({ icon, title, description }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="p-4 mb-6 bg-[#ff7be5] rounded-full text-white">
+      <div className="p-4 mb-6 bg-[#000] rounded-full text-white">
         {icon}
       </div>
       <h3 className="text-2xl font-semibold mb-4 text-gray-800">{title}</h3>

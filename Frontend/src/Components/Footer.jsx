@@ -25,12 +25,12 @@ const Footer = () => {
               <br />
               <a
                 href="mailto:cosmecos_company@mail.com"
-                className="hover:text-purple-400"
+                className=""
               >
                 cosmecos_company@mail.com
               </a>
               <br />
-              <a href="tel:+180098745698" className="hover:text-purple-400">
+              <a href="tel:+180098745698" className="">
                 +1 (800) 987 456 98
               </a>
             </p>
@@ -41,13 +41,13 @@ const Footer = () => {
             <h3 className="text-xl font-bold">Useful Links</h3>
             <div className="grid grid-cols gap-4">
               <div className="space-y-2 flex flex-col">
-                <a href="/" className="text-white hover:text-purple-400" aria-label="Home">
+                <a href="/" className="text-white " aria-label="Home">
                   Home Pages
                 </a>
-                <a href="/contact" className="text-white hover:text-purple-400" aria-label="Other Pages">
+                <a href="/contact" className="text-white " aria-label="Other Pages">
                   Contact Pages
                 </a>
-                <p className="text-white hover:text-purple-400" aria-label="Portfolio">
+                <p className="text-white " aria-label="Portfolio">
                   Portfolio
                 </p>
               </div>
@@ -65,13 +65,13 @@ const Footer = () => {
                 type="email"
                 name="email"
                 placeholder="Your Email"
-                className="p-2 rounded bg-black text-white border border-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
+                className="p-2 rounded bg-black text-white border border-white placeholder:text-gray-400 focus:outline-none focus:ring-1"
                 aria-label="Email for subscription"
                 required
               />
               <button
                 type="submit"
-                className="bg-black text-white py-2 px-4 rounded border border-white hover:bg-gray-900 hover:border-purple-400 transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                className="bg-black text-white py-2 px-4 rounded border border-white   transition-colors duration-300 focus:outline-none focus:ring-1 "
                 aria-label="Subscribe"
               >
                 SUBSCRIBE
@@ -86,7 +86,7 @@ const Footer = () => {
           <p>
             <a
               href="/terms"
-              className="hover:text-purple-400"
+              className=""
               aria-label="Terms and Conditions"
             >
               Terms and Conditions

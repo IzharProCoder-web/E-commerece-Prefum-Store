@@ -60,6 +60,14 @@ const HomeProduct = () => {
     }, 2000);
   };
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "+923129167292";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      `I'm interested in ${selectedProduct.name}`
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   useEffect(() => {
     const heights = productInfoRefs.current.map(ref => ref?.offsetHeight || 0);
     setMaxHeight(Math.max(...heights));
@@ -68,7 +76,7 @@ const HomeProduct = () => {
   return (
     <section className="py-8 sm:py-12 lg:py-16 bg-white relative font-sans">
       {showFavMessage && (
-        <div className="fixed top-16 sm:top-20 right-2 sm:right-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-xl z-50 animate-fadeInOut flex items-center text-sm sm:text-base">
+        <div className="fixed top-16 sm:top-20 right-2 sm:right-4 bg-green-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-xl z-50 animate-fadeInOut flex items-center text-sm sm:text-base">
           <FaHeart className="mr-1 sm:mr-2" />
           <span>{favMessage}</span>
         </div>
@@ -127,7 +135,7 @@ const HomeProduct = () => {
                   </h3>
                 </Link>
               </div>
-              <p className="text-red-500 text-sm sm:text-lg m sm:mt-1 mt font-medium">
+              <p className="text-red-500 text-sm sm:text-lg m sm:mt-1 mt-0 font-medium">
                 Rs.{data.price}
               </p>
               <del className="text-red-500 text-sm">Rs.{data.originalPrice}</del>
@@ -200,6 +208,15 @@ const HomeProduct = () => {
               >
                 Add to Cart - Rs.{(selectedProduct.price * quantity).toFixed(2)}
               </button>
+              <button
+                onClick={handleWhatsAppClick}
+                className="w-full bg-green-500 text-white py-2 sm:py-3 rounded-lg hover:bg-green-600 transition-colors mb-3 sm:mb-4 font-medium flex items-center justify-center text-sm sm:text-base"
+              >
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.112-5.505 4.507-9.984 10.008-9.984 2.668 0 5.163 1.029 7.039 2.904 1.875 1.875 2.904 4.37 2.904 7.037 0 5.506-4.492 9.987-9.988 9.987m8.335-2.326z" />
+                </svg>
+                Order on WhatsApp
+              </button>
               <div className="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 flex items-center">
                 <svg className="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -225,7 +242,7 @@ const HomeProduct = () => {
         </div>
       )}
 
-      <div className="flex justify-center mt-8 sm:mt-5 px-4">
+      <div className="flex justify-center mt-8 sm:mt- px-4">
         <button
           onClick={() => navigate("/shop")}
           className="bg-black text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium shadow-md hover:shadow-lg text-sm sm:text-base"

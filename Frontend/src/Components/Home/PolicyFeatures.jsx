@@ -1,12 +1,12 @@
 import React from "react";
-import { FaTrophy, FaShieldAlt, FaThumbsUp } from "react-icons/fa";
+import { FaTruck, FaShieldAlt, FaThumbsUp } from "react-icons/fa";
 
 const PolicyFeatures = () => {
   const features = [
     {
-      icon: <FaTrophy className="text-3xl sm:text-4xl lg:text-5xl text-black mb-4" />,
-      title: "AWARDED BY CONSUMER ASSOCIATION OF PAKISTAN",
-      description: "Consumer Association of Pakistan recognized Scents N Stories in the 17th Consumer Choice Awards",
+      icon: <FaTruck className="text-3xl sm:text-4xl lg:text-5xl text-black mb-4" />,
+      title: "FAST AND RELIABLE SHIPPING",
+      description: "Enjoy quick and dependable delivery on all orders, ensuring your products arrive on time, every time.",
     },
     {
       icon: <FaShieldAlt className="text-3xl sm:text-4xl lg:text-5xl text-black mb-4" />,
@@ -27,7 +27,7 @@ const PolicyFeatures = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px] text-center p-6 bg-white  transition-all duration-300"
+              className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px] text-center p-6 bg-white transition-all duration-300"
               aria-labelledby={`feature-title-${index}`}
             >
               <div className="flex justify-center">{feature.icon}</div>

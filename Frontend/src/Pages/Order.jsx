@@ -101,7 +101,7 @@ const OrderPage = () => {
           {/* Place Order Button */}
           <button
             onClick={handlePlaceOrder}
-            className="w-full mt-8 bg-[#ff7be5] text-white py-3 rounded-lg hover:bg-[#e56acf] transition-colors duration-200 font-semibold text-lg"
+            className="w-full mt-8 bg-[#000] text-white py-3 rounded-lg  transition-colors duration-200 font-semibold text-lg"
           >
             Place Order
           </button>

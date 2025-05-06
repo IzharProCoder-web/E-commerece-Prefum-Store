@@ -29,7 +29,7 @@ const Home = () => {
   // };
 
   return (
-    <div className='overflow-hidden'>
+    <div className='overflow-hidden '>
       {/* {showPopUp && <HomePopShowComp onClose={handleClosePopup} />} */}
       <HomeHeroComp />
       <HomeAutoSlider />

@@ -71,7 +71,7 @@ const LoginPop = ({ setShowLoginPop }) => {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff7be5]"
+                className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#000]"
                 placeholder="Enter your full name"
                 required
               />
@@ -87,7 +87,7 @@ const LoginPop = ({ setShowLoginPop }) => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff7be5]"
+              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#000]"
               placeholder="Enter your email"
               required
             />
@@ -102,7 +102,7 @@ const LoginPop = ({ setShowLoginPop }) => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff7be5]"
+              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#000]"
               placeholder="Enter your password"
               required
             />
@@ -114,7 +114,7 @@ const LoginPop = ({ setShowLoginPop }) => {
 
           <button
             type="submit"
-            className="w-full bg-[#ff7be5] text-white py-2 rounded-lg hover:bg-[#e56acf] transition-colors duration-300 disabled:opacity-50"
+            className="w-full bg-[#000] text-white py-2 rounded-lg  transition-colors duration-300 disabled:opacity-50"
             disabled={loading}
           >
             {loading
@@ -130,7 +130,7 @@ const LoginPop = ({ setShowLoginPop }) => {
             Create a new account?{" "}
             <button
               onClick={() => setCurrState("Sign Up")}
-              className="text-[#ff7be5] font-medium hover:underline focus:outline-none"
+              className="text-[#686565] font-medium hover:underline focus:outline-none"
             >
               Sign Up
             </button>
@@ -140,7 +140,7 @@ const LoginPop = ({ setShowLoginPop }) => {
             Already have an account?{" "}
             <button
               onClick={() => setCurrState("Login")}
-              className="text-[#ff7be5] font-medium hover:underline focus:outline-none"
+              className="text-[#686565] font-medium hover:underline focus:outline-none"
             >
               Login
             </button>

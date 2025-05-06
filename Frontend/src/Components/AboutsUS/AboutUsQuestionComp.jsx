@@ -7,7 +7,7 @@ const AboutUsQuestionComp = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-[16px] font-bold text-center mb-6 text-[#ff7be5]"
+          className="text-[16px] font-bold text-center mb-6 text-[#969393]"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

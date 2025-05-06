@@ -14,7 +14,7 @@ const AboutUsHeroComp = () => {
     >
       {/* Text Section */}
       <div className="text-center w-full lg:w-1/2 mb-10 lg:mb-0">
-        <p className="text-sm md:text-base text-black mb-3 md:mb-4 font-[Jost] font-bold">
+        <p className="text-sm md:text-base text-[#8d8d8d] mb-3 md:mb-4 font-[Jost] font-bold">
           Our Passion for Perfume
         </p>
         <h3 className="mb-4 md:mb-6 text-2xl md:text-4xl font-bold font-[Gabarito]">

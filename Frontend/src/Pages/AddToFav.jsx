@@ -72,7 +72,7 @@ const AddToFav = () => {
         </p>
         <Link 
           to="/shop" 
-          className="inline-block px-6 py-3 bg-gradient-to-r from-[#ff7be5] to-[#e56acf] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+          className="inline-block px-6 py-3 bg-black text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
         >
           Browse Products
         </Link>
@@ -111,7 +111,7 @@ const AddToFav = () => {
 
         <div className="p-4">
           <Link to={`/product/${product._id}`}>
-            <h3 className="font-semibold text-lg mb-1 hover:text-[#ff7be5] transition-colors line-clamp-1">
+            <h3 className="font-semibold text-lg mb-1  transition-colors line-clamp-1">
               {product.name}
             </h3>
           </Link>
@@ -150,7 +150,7 @@ const AddToFav = () => {
       <div className="mb-8">
         <Link 
           to="/shop" 
-          className="flex items-center text-[#ff7be5] hover:text-[#e56acf] mb-4 transition-colors"
+          className="flex items-center text-[#625d5d] hover:text-[#000] mb-4 transition-colors"
         >
           <FaArrowLeft className="mr-2" /> Back to Shop
         </Link>

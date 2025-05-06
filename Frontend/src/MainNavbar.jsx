@@ -27,13 +27,13 @@ const MainNavbar = ({ setShowLoginPop }) => {
     if (searchQuery.trim()) {
       navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
       setSearchQuery("");
-      setIsSearchOpen(false); // Close search bar after submission
+      setIsSearchOpen(false);
     }
   };
 
   const clearSearch = () => {
     setSearchQuery("");
-    setIsSearchOpen(false); // Close search bar when clearing
+    setIsSearchOpen(false);
   };
 
   return (
@@ -279,103 +279,27 @@ const MainNavbar = ({ setShowLoginPop }) => {
       </nav>
 
       {/* Mobile Navbar */}
-      <nav className="md:hidden flex justify-between items-center p-4 bg-black sticky top-0 z-20">
-        {/* Logo */}
-        <div className="flex items-center">
-          <Link to="/" className="flex items-center">
-            <img
-              src="./Image/FAIZZIFY-LOGO.png"
-              alt="Logo"
-              className="w-10 h-10 filter invert brightness-0"
-            />
-            <span className="font-bold text-lg text-white">FAIZIFFY</span>
-          </Link>
-        </div>
-
-        {/* Icons and Search */}
-        <div className="flex items-center gap-2">
-          {/* Search Bar (Mobile) */}
-          <div className="relative">
-            {isSearchOpen ? (
-              <form onSubmit={handleSearch} className="flex items-center">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search..."
-                  className="bg-black text-white text-xs rounded-full pl-8 pr-8 py-1 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white w-[120px] sm:w-[150px] placeholder-gray-400"
-                  autoFocus
-                  aria-label="Search products"
-                />
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white"
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <button
-                  type="button"
-                  onClick={clearSearch}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white"
-                  aria-label="Close search"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6 18 18" />
-                  </svg>
-                </button>
-              </form>
-            ) : (
-              <button
-                onClick={toggleSearch}
-                className="p-1"
-                aria-label="Open search"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-white"
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-              </button>
-            )}
+      <nav className="md:hidden bg-black sticky top-0 z-20">
+        <div className="flex justify-between items-center p-4">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center">
+              <img
+                src="./Image/FAIZZIFY-LOGO.png"
+                alt="Logo"
+                className="w-10 h-10 filter invert brightness-0"
+              />
+              <span className="font-bold text-lg text-white">FAIZIFFY</span>
+            </Link>
           </div>
 
-          {/* Account Icon and User Name for Mobile */}
-          <div className="relative flex items-center gap-1">
+          {/* Icons */}
+          <div className="flex items-center gap-2">
+            {/* Search Icon */}
             <button
-              onClick={
-                isLoggedIn ? toggleDropdown : () => setShowLoginPop(true)
-              }
+              onClick={toggleSearch}
               className="p-1"
+              aria-label="Open search"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -389,141 +313,224 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 strokeLinejoin="round"
                 className="text-white"
               >
-                <circle cx="12" cy="8" r="5" />
-                <path d="M20 21a8 8 0 0 0-16 0" />
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
             </button>
 
-            {isLoggedIn && (
-              <span
-                onClick={toggleDropdown}
-                className="text-xs font-semibold text-white cursor-pointer truncate max-w-[80px]"
+            {/* Account Icon and User Name */}
+            <div className="relative flex items-center gap-1">
+              <button
+                onClick={
+                  isLoggedIn ? toggleDropdown : () => setShowLoginPop(true)
+                }
+                className="p-1"
               >
-                {user.name || "User"}
-              </span>
-            )}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                >
+                  <circle cx="12" cy="8" r="5" />
+                  <path d="M20 21a8 8 0 0 0-16 0" />
+                </svg>
+              </button>
 
-            {/* Mobile Dropdown */}
-            {isLoggedIn && isDropdownOpen && (
-              <div className="absolute right-0 top-10 w-52 bg-black border border-gray-700 rounded-xl shadow-xl z-50 animate-fadeIn">
-                <div className="flex justify-between items-center px-4 py-2">
-                  <span className="text-sm font-semibold text-white">
-                    {user.name || "User"}
-                  </span>
-                  <svg
-                    onClick={closeDropdown}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="cursor-pointer text-white"
-                  >
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6 12 12" />
-                  </svg>
+              {isLoggedIn && (
+                <span
+                  onClick={toggleDropdown}
+                  className="text-xs font-semibold text-white cursor-pointer truncate max-w-[80px]"
+                >
+                  {user.name || "User"}
+                </span>
+              )}
+
+              {/* Mobile Dropdown */}
+              {isLoggedIn && isDropdownOpen && (
+                <div className="absolute right-0 top-10 w-52 bg-black border border-gray-700 rounded-xl shadow-xl z-50 animate-fadeIn">
+                  <div className="flex justify-between items-center px-4 py-2">
+                    <span className="text-sm font-semibold text-white">
+                      {user.name || "User"}
+                    </span>
+                    <svg
+                      onClick={closeDropdown}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="cursor-pointer text-white"
+                    >
+                      <path d="M18 6 6 18" />
+                      <path d="M6 6 12 12" />
+                    </svg>
+                  </div>
+                  <ul className="py-2">
+                    <li>
+                      <Link
+                        to="/order"
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
+                      >
+                        My Orders
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => {
+                          localStorage.removeItem("token");
+                          localStorage.removeItem("user");
+                          setIsDropdownOpen(false);
+                          alert("Logged out successfully!");
+                          navigate("/");
+                        }}
+                        className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
                 </div>
-                <ul className="py-2">
-                  <li>
-                    <Link
-                      to="/order"
-                      onClick={() => setIsDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
-                    >
-                      My Orders
-                    </Link>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => {
-                        localStorage.removeItem("token");
-                        localStorage.removeItem("user");
-                        setIsDropdownOpen(false);
-                        alert("Logged out successfully!");
-                        navigate("/");
-                      }}
-                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800"
-                    >
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            )}
+              )}
+            </div>
+
+            {/* Favorite Icon */}
+            <Link to="/fav" className="p-1 relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24  Faizan Ahmed · PK•3 reviews · 5 days ago · Perfume are good but lasting are highly doubted. Smash my head is their premium product but it doesnt last long. Rest legend is also most used by me · Date of experience: November 27, 2024 · Advertisement · kashif naz · PK•1 review · Apr 16, 2025 · i have purchased cash 22 .. fragrance is lasting 1 hour and ghatiya quality of bottle ·24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
+              >
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+              {getTotalFavoriteItems() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-pink-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {getTotalFavoriteItems()}
+                </span>
+              )}
+            </Link>
+
+            {/* Cart Icon */}
+            <Link to="/cart" className="p-1 relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
+              >
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                <path d="M3 6h18" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+              {getTotalCartItems() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-gray-200 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {getTotalCartItems()}
+                </span>
+              )}
+            </Link>
+
+            {/* Hamburger Menu */}
+            <button onClick={toggleMobileMenu} className="p-1 ml-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
+              >
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+              </svg>
+            </button>
           </div>
-
-          {/* Favorite Icon (Mobile) */}
-          <Link to="/fav" className="p-1 relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-white"
-            >
-              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-            </svg>
-            {getTotalFavoriteItems() > 0 && (
-              <span className="absolute -top-1 -right-1 bg-pink-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {getTotalFavoriteItems()}
-              </span>
-            )}
-          </Link>
-
-          {/* Cart Icon (Mobile) */}
-          <Link to="/cart" className="p-1 relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-white"
-            >
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-              <path d="M3 6h18" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
-            {getTotalCartItems() > 0 && (
-              <span className="absolute -top-1 -right-1 bg-gray-200 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {getTotalCartItems()}
-              </span>
-            )}
-          </Link>
-
-          {/* Hamburger Menu */}
-          <button onClick={toggleMobileMenu} className="p-1 ml-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-white"
-            >
-              <line x1="4" y1="12" x2="20" y2="12" />
-              <line x1="4" y1="6" x2="20" y2="6" />
-              <line x1="4" y1="18" x2="20" y2="18" />
-            </svg>
-          </button>
         </div>
+
+        {/* Search Bar (Mobile) */}
+        {isSearchOpen && (
+          <div className="flex justify-center px-4 pb-4">
+            <div className="relative w-full max-w-[90%]">
+              <form onSubmit={handleSearch} className="flex items-center">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products..."
+                  className="bg-white text-black text-sm rounded-full pl-10 pr-10 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 w-full placeholder-gray-500 shadow-sm"
+                  autoFocus
+                  aria-label="Search products"
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+                    aria-label="Clear search"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 6 6 18" />
+                      <path d="M6 6 18 18" />
+                    </svg>
+                  </button>
+                )}
+              </form>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Mobile Menu */}
@@ -560,7 +567,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search products..."
-                  className="bg-black text-white text-sm rounded-full pl-10 pr-10 py-2 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white w-full placeholder-gray-400"
+                  className="bg-white text-black text-sm rounded-full pl-10 pr-10 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 w-full placeholder-gray-500 shadow-sm"
                   aria-label="Search products"
                 />
                 <svg
@@ -573,7 +580,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -582,7 +589,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
                     aria-label="Clear search"
                   >
                     <svg

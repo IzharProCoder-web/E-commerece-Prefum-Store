@@ -132,17 +132,17 @@ const Shop = () => {
       )}
       
       {showFavNotification && (
-        <div className="fixed top-20 right-4 bg-pink-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-2">
+        <div className="fixed top-20 right-4 bg-black text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-2">
           <FaHeart /> {notificationMessage}
         </div>
       )}
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-pink-100 to-purple-100 py-12 md:py-20 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+      <div className="bg-black  py-12 md:py-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
           Premium Fragrance Collection
         </h1>
-        <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+        <p className="text-base md:text-lg text-white max-w-2xl mx-auto px-4">
           Discover scents that define your personality and style
         </p>
       </div>
@@ -306,7 +306,7 @@ const Shop = () => {
                   <div className="absolute inset-0 bg-[#00000039] bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <button
                       onClick={() => navigate(`/product/${perfume._id}`)}
-                      className="bg-white text-pink-500 px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base"
+                      className="bg-white text-black px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base"
                     >
                       Quick View
                     </button>
@@ -449,7 +449,7 @@ const Shop = () => {
                   onClick={() => paginate(number)}
                   className={`px-3 py-1 border rounded-lg ${
                     currentPage === number
-                      ? "bg-pink-500 text-white"
+                      ? "bg-black text-white"
                       : "bg-white hover:bg-gray-50"
                   }`}
                 >

@@ -27,7 +27,7 @@ const ContactHeroComp = () => {
 
       {/* Text Section */}
       <div className="w-full lg:w-1/2 text-center lg:text-left">
-        <p className="text-sm md:text-base text-[#ff7be5] mb-3 md:mb-4 font-[Jost] font-bold">
+        <p className="text-sm md:text-base text-[#9f9f9f] mb-3 md:mb-4 font-[Jost] font-bold">
           Timeless Elegance, Modern Charm
         </p>
         <h3 className="mb-4 md:mb-6 text-2xl md:text-4xl font-bold font-[Gabarito]">
