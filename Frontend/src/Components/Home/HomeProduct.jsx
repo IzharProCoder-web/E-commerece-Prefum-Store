@@ -62,9 +62,8 @@ const HomeProduct = () => {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "+923129167292";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      `I'm interested in ${selectedProduct.name}`
-    )}`;
+    const message = `I'm interested in the following product:\nName: ${selectedProduct.name}\nPrice: Rs.${selectedProduct.price}\nImage: ${selectedProduct.img}\nQuantity: ${quantity}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
