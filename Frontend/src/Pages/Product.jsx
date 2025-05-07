@@ -9,7 +9,7 @@ import {
   FaStar,
   FaRegStar,
   FaArrowLeft,
-  FaHeart // Added filled heart icon
+  FaHeart
 } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, FreeMode } from "swiper/modules";
@@ -35,7 +35,7 @@ const Product = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [activeTab, setActiveTab] = useState("description");
   const [isAddingToCart, setIsAddingToCart] = useState(false);
-  const [message, setMessage] = useState(""); // Added for showing messages
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const allProducts = [...(shopProductData || []), ...(homeProductData || [])];
@@ -45,10 +45,9 @@ const Product = () => {
     }
   }, [homeProductData, shopProductData, id]);
 
-  // Function to show temporary messages
   const showMessage = (text) => {
     setMessage(text);
-    setTimeout(() => setMessage(""), 2000); // Clear message after 2 seconds
+    setTimeout(() => setMessage(""), 2000);
   };
 
   const handleDecrement = () => {
@@ -66,7 +65,6 @@ const Product = () => {
       setIsAddingToCart(true);
       addToCart(product._id, quantity);
       showMessage("Added to cart successfully!");
-
       setTimeout(() => {
         setIsAddingToCart(false);
       }, 1000);
@@ -75,7 +73,6 @@ const Product = () => {
 
   const handleHeartClick = () => {
     if (!product) return;
-
     if (favoriteItems[product._id]) {
       removeFromFavorites(product._id);
       showMessage("Removed from favorites");
@@ -83,6 +80,14 @@ const Product = () => {
       addToFavorites(product._id);
       showMessage("Added to favorites");
     }
+  };
+
+  const handleWhatsAppClick = () => {
+    if (!product) return;
+    const phoneNumber = "+923129167292";
+    const message = `I'm interested in the following product:\nName: ${product.name}\nPrice: Rs.${product.price}\nImage: ${product.img}\nQuantity: ${quantity}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   const renderRatingStars = (rating) => {
@@ -112,7 +117,6 @@ const Product = () => {
 
   return (
     <section className="py-8 bg-gray-50 min-h-screen">
-      {/* Message Display */}
       {message && (
         <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg z-50 animate-fade-in-out">
           {message}
@@ -206,10 +210,10 @@ const Product = () => {
               <p className="text-gray-600 mb-4 font-medium">{product.scents}</p>
 
               <div className="flex items-center mb-4">
-                <span className="text-2xl font-bold text-gray-900">${product.price}</span>
+                <span className="text-2xl font-bold text-gray-900">Rs.{product.price}</span>
                 {product.originalPrice && (
                   <span className="text-lg text-gray-400 line-through ml-3">
-                    ${product.originalPrice}
+                    Rs.{product.originalPrice}
                   </span>
                 )}
                 {product.originalPrice && (
@@ -238,22 +242,21 @@ const Product = () => {
               )}
             </div>
 
-            {/* Updated Favorite Button */}
             <button
               onClick={handleHeartClick}
               className="flex items-center gap-2 mb-6 p-3 border border-gray-200 rounded-md hover:bg-gray-50 w-full justify-center transition-colors"
             >
               {favoriteItems[product._id] ? (
-                <FaHeart className="text-2xl text-[#ff7be5]" /> // Filled heart with specified color
+                <FaHeart className="text-2xl text-[#ff7be5]" />
               ) : (
-                <CiHeart className="text-2xl text-gray-600" /> // Outline heart
+                <CiHeart className="text-2xl text-gray-600" />
               )}
               <span className="font-medium">
                 {favoriteItems[product._id] ? "Saved to favorites" : "Add to favorites"}
               </span>
             </button>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
               <div className="flex items-center border border-gray-200 rounded-md w-full sm:w-auto">
                 <button
                   onClick={handleDecrement}
@@ -277,7 +280,7 @@ const Product = () => {
                 className={`flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 rounded-md transition-colors ${
                   isAddingToCart
                     ? "bg-green-500 text-white"
-                    : "bg-[#000] hover:bg-[#d45fb8] text-white"
+                    : "bg-[#000] hover:bg-[#000] text-white"
                 }`}
               >
                 {isAddingToCart ? (
@@ -285,11 +288,21 @@ const Product = () => {
                 ) : (
                   <>
                     <CiShoppingCart className="text-xl" />
-                    ADD TO CART - ${(product.price * quantity).toFixed(2)}
+                    ADD TO CART - Rs.{(product.price * quantity).toFixed(2)}
                   </>
                 )}
               </button>
             </div>
+
+            <button
+              onClick={handleWhatsAppClick}
+              className="w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition-colors mb-8 font-medium flex items-center justify-center"
+            >
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.112-5.505 4.507-9.984 10.008-9.984 2.668 0 5.163 1.029 7.039 2.904 1.875 1.875 2.904 4.37 2.904 7.037 0 5.506-4.492 9.987-9.988 9.987m8.335-2.326z" />
+              </svg>
+              Order on WhatsApp
+            </button>
 
             <div className="border-t border-gray-200 pt-6">
               <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
@@ -459,6 +472,5 @@ const Product = () => {
     </section>
   );
 };
-
 
 export default Product;

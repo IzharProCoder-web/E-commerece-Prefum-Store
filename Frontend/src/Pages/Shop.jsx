@@ -7,7 +7,6 @@ import {
   FaSearch,
   FaFilter,
   FaShoppingCart,
-  FaPlus,
 } from "react-icons/fa";
 import { GiPerfumeBottle, GiPriceTag } from "react-icons/gi";
 import { StoreContext } from "../StoreContext";
@@ -138,7 +137,7 @@ const Shop = () => {
       )}
 
       {/* Hero Section */}
-      <div className="bg-black  py-12 md:py-20 text-center">
+      <div className="bg-black py-12 md:py-20 text-center">
         <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
           Premium Fragrance Collection
         </h1>
@@ -199,7 +198,7 @@ const Shop = () => {
                 <GiPriceTag /> Price Range
               </h3>
               <div className="flex items-center gap-4 mb-2">
-                <span className="text-sm md:text-base">${priceRange[0]}</span>
+                <span className="text-sm md:text-base">PKR {priceRange[0]}</span>
                 <input
                   type="range"
                   min="0"
@@ -211,7 +210,7 @@ const Shop = () => {
                   }}
                   className="w-full"
                 />
-                <span className="text-sm md:text-base">${priceRange[1]}</span>
+                <span className="text-sm md:text-base">PKR {priceRange[1]}</span>
               </div>
             </div>
 
@@ -354,8 +353,9 @@ const Shop = () => {
               <div className="p-3 md:p-4">
                 <div className="flex justify-between items-start mb-1">
                   <h3
-                   onClick={() => navigate(`/product/${perfume._id}`)}
-                   className="font-semibold text-base md:text-lg hover:text-pink-500 transition-colors cursor-pointer line-clamp-1">
+                    onClick={() => navigate(`/product/${perfume._id}`)}
+                    className="font-semibold text-base md:text-lg hover:text-black transition-colors cursor-pointer line-clamp-1"
+                  >
                     {perfume.name}
                   </h3>
                   <span className="bg-gray-100 text-gray-800 text-xs px-1 md:px-2 py-0.5 md:py-1 rounded">
@@ -385,25 +385,21 @@ const Shop = () => {
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="font-bold text-base md:text-lg">${perfume.price}</span>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center">
+                    <span className="font-bold text-base md:text-lg">PKR {perfume.price}</span>
                     {perfume.originalPrice && (
                       <span className="ml-1 md:ml-2 text-gray-400 text-xs md:text-sm line-through">
-                        ${perfume.originalPrice}
+                        PKR {perfume.originalPrice}
                       </span>
                     )}
                   </div>
                   <button
                     onClick={() => handleAddToCart(perfume._id)}
-                    className="bg-black  text-white p-1 md:p-2 rounded-lg transition-colors flex items-center justify-center"
+                    className="bg-black text-white px-3 py-1 md:px-4 md:py-2 rounded-lg transition-colors flex items-center justify-center gap-1 w-full text-sm md:text-base"
                     aria-label="Add to cart"
                   >
-                    {/* Show + icon on mobile, "Add" text on desktop */}
-                    <span className="md:hidden"><FaPlus size={12} /></span>
-                    <span className="hidden md:flex items-center gap-1">
-                      <FaShoppingCart size={14} /> Add
-                    </span>
+                    <FaShoppingCart size={14} /> Add to Cart
                   </button>
                 </div>
               </div>
@@ -424,7 +420,7 @@ const Shop = () => {
                 setSelectedSizes([]);
                 setCurrentPage(1);
               }}
-              className="mt-4 text-pink-500 hover:underline"
+              className="mt-4 text-black hover:underline"
             >
               Clear all filters
             </button>

@@ -26,7 +26,7 @@ const StoreContextProvider = (props) => {
     localStorage.setItem(cartStorageKey, JSON.stringify(cartItems));
   }, [cartItems, cartStorageKey]);
 
-  // Save favoriteItemsgrimace to local storage whenever it changes
+  // Save favoriteItems to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem(favoriteStorageKey, JSON.stringify(favoriteItems));
   }, [favoriteItems, favoriteStorageKey]);
@@ -70,6 +70,10 @@ const StoreContextProvider = (props) => {
     });
   };
 
+  const clearCart = () => {
+    setCartItems({});
+  };
+
   const getTotalCartAmount = () => {
     if (!cartItems || (!homeProductData && !shopProductData)) return 0;
 
@@ -104,6 +108,17 @@ const StoreContextProvider = (props) => {
     });
   };
 
+  const increaseQuantity = (id) => {
+    setCartItems((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
+  };
+
+  const decreaseQuantity = (id) => {
+    setCartItems((prev) => {
+      if (prev[id] <= 1) return prev;
+      return { ...prev, [id]: prev[id] - 1 };
+    });
+  };
+
   const contextValue = {
     homeProductData,
     bestSellerProductData,
@@ -111,6 +126,7 @@ const StoreContextProvider = (props) => {
     cartItems,
     addToCart,
     removeFromCart,
+    clearCart,
     getTotalCartAmount,
     favoriteItems,
     addToFavorites,
@@ -119,6 +135,8 @@ const StoreContextProvider = (props) => {
     loginUser,
     logoutUser,
     userId,
+    increaseQuantity,
+    decreaseQuantity,
   };
 
   return (

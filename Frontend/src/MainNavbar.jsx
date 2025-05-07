@@ -97,7 +97,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
-                className="bg-black text-white text-sm rounded-full pl-10 pr-10 py-2 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white hover:scale-105 transition-transform duration-200 w-[150px] md:w-[180px] lg:w-[200px] placeholder-gray-400"
+                className="bg-white text-black text-sm rounded-full pl-10 pr-10 py-2 border-2 border-white focus:outline-none focus:ring-2 focus:ring-white hover:scale-105 transition-transform duration-200 w-[150px] md:w-[180px] lg:w-[200px] placeholder-gray-400"
                 aria-label="Search products"
               />
               <svg
@@ -110,7 +110,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
               >
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -119,7 +119,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 <button
                   type="button"
                   onClick={clearSearch}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-black"
                   aria-label="Clear search"
                 >
                   <svg
@@ -242,7 +242,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
               {getTotalFavoriteItems() > 0 && (
-                <div className="absolute bg-pink-400 -bottom-1 -right-2 w-5 h-5 rounded-full text-center text-white text-xs flex items-center justify-center">
+                <div className="absolute bg-white -bottom-1 -right-2 w-5 h-5 rounded-full text-center text-black text-xs flex items-center justify-center">
                   {getTotalFavoriteItems()}
                 </div>
               )}
@@ -269,7 +269,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
               {getTotalCartItems() > 0 && (
-                <div className="absolute bg-gray-200 -bottom-1 -right-2 w-5 h-5 rounded-full text-center text-white text-xs flex items-center justify-center">
+                <div className="absolute bg-white -bottom-1 -right-2 w-5 h-5 rounded-full text-center text-black text-xs flex items-center justify-center">
                   {getTotalCartItems()}
                 </div>
               )}
@@ -411,7 +411,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                viewBox="0 0 24  Faizan Ahmed · PK•3 reviews · 5 days ago · Perfume are good but lasting are highly doubted. Smash my head is their premium product but it doesnt last long. Rest legend is also most used by me · Date of experience: November 27, 2024 · Advertisement · kashif naz · PK•1 review · Apr 16, 2025 · i have purchased cash 22 .. fragrance is lasting 1 hour and ghatiya quality of bottle ·24"
+                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -422,7 +422,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
               {getTotalFavoriteItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-pink-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {getTotalFavoriteItems()}
                 </span>
               )}
@@ -447,7 +447,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
               {getTotalCartItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gray-200 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {getTotalCartItems()}
                 </span>
               )}
@@ -499,7 +499,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -508,7 +508,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-black"
                     aria-label="Clear search"
                   >
                     <svg
@@ -540,7 +540,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
             {/* Close Icon */}
             <button
               onClick={toggleMobileMenu}
-              className="absolute top-4 right-4 p-2"
+              className="absolute top-14 right-4 p-2"
               aria-label="Close mobile menu"
             >
               <svg
@@ -580,7 +580,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -589,7 +589,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-black"
                     aria-label="Clear search"
                   >
                     <svg
@@ -610,6 +610,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 )}
               </form>
             </div>
+            {/* Navigation Links */}
             <ul className="space-y-4 uppercase">
               <li className="hover:no-underline">
                 <Link
@@ -657,6 +658,7 @@ const MainNavbar = ({ setShowLoginPop }) => {
                 </Link>
               </li>
             </ul>
+         
           </div>
         </div>
       )}

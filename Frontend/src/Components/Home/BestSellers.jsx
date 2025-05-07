@@ -62,9 +62,8 @@ const BestSellers = () => {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "+923129167292";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      `I'm interested in ${selectedProduct.name}`
-    )}`;
+    const message = `I'm interested in the following product:\nName: ${selectedProduct.name}\nPrice: PKR ${selectedProduct.price}\nImage: ${selectedProduct.img}\nQuantity: ${quantity}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -83,10 +82,10 @@ const BestSellers = () => {
       )}
 
       <div className="mb-8 px-4 max-w-7xl mx-auto flex justify-between">
-        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-sans md:ml-12 tracking-tight text-black">
-           TOP PICKS
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-sans md:ml-[130px] tracking-tight text-black">
+          TOP PICKS
         </h3>
-        <Link to="/shop" className="text-sm sm:text-base text-black hover:underline md:mr-12 mt-2 inline-block">
+        <Link to="/shop" className="text-sm sm:text-base text-black hover:underline md:mr-[135px] mt-2 inline-block">
           View all
         </Link>
       </div>
@@ -136,9 +135,9 @@ const BestSellers = () => {
                 </Link>
               </div>
               <p className="text-red-500 text-sm sm:text-lg m sm:mt-1 mt-0 font-medium">
-                Rs.{data.price}
+                PKR {data.price}
               </p>
-              <del className="text-red-500 text-sm">Rs.{data.originalPrice}</del>
+              <del className="text-red-500 text-sm">PKR {data.originalPrice}</del>
             </div>
           </div>
         ))}
@@ -167,11 +166,11 @@ const BestSellers = () => {
               </h2>
               <div className="flex items-center mb-3 sm:mb-4">
                 <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                  Rs.{selectedProduct.price}
+                  PKR {selectedProduct.price}
                 </span>
                 {selectedProduct.originalPrice && (
                   <span className="text-base sm:text-lg text-gray-400 line-through ml-2 sm:ml-3">
-                    Rs.{selectedProduct.originalPrice}
+                    PKR {selectedProduct.originalPrice}
                   </span>
                 )}
               </div>
@@ -206,7 +205,7 @@ const BestSellers = () => {
                 onClick={handleAddToCart}
                 className="w-full bg-black text-white py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition-colors mb-3 sm:mb-4 font-medium flex items-center justify-center text-sm sm:text-base"
               >
-                Add to Cart - Rs.{(selectedProduct.price * quantity).toFixed(2)}
+                Add to Cart - PKR {(selectedProduct.price * quantity).toFixed(2)}
               </button>
               <button
                 onClick={handleWhatsAppClick}
@@ -221,7 +220,7 @@ const BestSellers = () => {
                 <svg className="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                Spend Rs.1,000 for Free Shipping
+                Spend PKR 1,000 for Free Shipping
               </div>
               <div className="text-xs sm:text-sm text-gray-600 space-y-1 sm:space-y-2 border-t pt-3 sm:pt-4">
                 <p><strong className="text-gray-800">SKU:</strong> {selectedProduct.sku}</p>
