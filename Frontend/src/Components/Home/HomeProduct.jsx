@@ -62,7 +62,7 @@ const HomeProduct = () => {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "+923129167292";
-    const message = `I'm interested in the following product:\nName: ${selectedProduct.name}\nPrice: PKR ${selectedProduct.price}\nImage: ${selectedProduct.img}\nQuantity: ${quantity}`;
+    const message = `I'm interested in the following product:\nName: ${selectedProduct.name}\nPrice: Rs ${selectedProduct.price}\nImage: ${selectedProduct.img}\nQuantity: ${quantity}`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
@@ -134,10 +134,12 @@ const HomeProduct = () => {
                   </h3>
                 </Link>
               </div>
-              <p className="text-red-500 text-sm sm:text-lg m sm:mt-1 mt-0 font-medium">
-                PKR {data.price}
-              </p>
-              <del className="text-red-500 text-sm">PKR {data.originalPrice}</del>
+              <div className="flex items-center gap-2">
+                <p className="text-red-500 text-lg sm:mt-1 mt-0 font-medium">
+                  Rs {data.price}
+                </p>
+                <del className="text-red-500 text-sm pt-3">Rs {data.originalPrice}</del>
+              </div>
             </div>
           </div>
         ))}
@@ -166,11 +168,11 @@ const HomeProduct = () => {
               </h2>
               <div className="flex items-center mb-3 sm:mb-4">
                 <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                  PKR {selectedProduct.price}
+                  Rs {selectedProduct.price}
                 </span>
                 {selectedProduct.originalPrice && (
                   <span className="text-base sm:text-lg text-gray-400 line-through ml-2 sm:ml-3">
-                    PKR {selectedProduct.originalPrice}
+                    Rs {selectedProduct.originalPrice}
                   </span>
                 )}
               </div>
@@ -205,7 +207,7 @@ const HomeProduct = () => {
                 onClick={handleAddToCart}
                 className="w-full bg-black text-white py-2 sm:py-3 rounded-lg hover:bg-gray-800 transition-colors mb-3 sm:mb-4 font-medium flex items-center justify-center text-sm sm:text-base"
               >
-                Add to Cart - PKR {(selectedProduct.price * quantity).toFixed(2)}
+                Add to Cart - Rs {(selectedProduct.price * quantity).toFixed(2)}
               </button>
               <button
                 onClick={handleWhatsAppClick}
@@ -220,7 +222,7 @@ const HomeProduct = () => {
                 <svg className="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                Spend PKR 1,000 for Free Shipping
+                Spend Rs 1,000 for Free Shipping
               </div>
               <div className="text-xs sm:text-sm text-gray-600 space-y-1 sm:space-y-2 border-t pt-3 sm:pt-4">
                 <p><strong className="text-gray-800">SKU:</strong> {selectedProduct.sku}</p>

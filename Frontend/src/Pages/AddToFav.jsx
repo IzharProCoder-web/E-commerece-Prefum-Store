@@ -111,7 +111,7 @@ const AddToFav = () => {
 
         <div className="p-4">
           <Link to={`/product/${product._id}`}>
-            <h3 className="font-semibold text-lg mb-1  transition-colors line-clamp-1">
+            <h3 className="font-semibold text-lg mb-1 transition-colors line-clamp-1">
               {product.name}
             </h3>
           </Link>
@@ -119,10 +119,10 @@ const AddToFav = () => {
           
           <div className="flex justify-between items-center">
             <div>
-              <span className="font-bold text-gray-900">${product.price}</span>
+              <span className="font-bold text-gray-900">Rs {product.price}</span>
               {product.originalPrice && (
                 <span className="ml-2 text-gray-400 text-sm line-through">
-                  ${product.originalPrice}
+                  Rs {product.originalPrice}
                 </span>
               )}
             </div>

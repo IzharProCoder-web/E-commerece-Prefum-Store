@@ -123,7 +123,7 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Notifications */}
+      {/*Notifications */}
       {showCartNotification && (
         <div className="fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-2 animate-fade-in-out">
           <FaShoppingCart /> {notificationMessage}
@@ -171,7 +171,7 @@ const Shop = () => {
                 setSortOption(e.target.value);
                 setCurrentPage(1); // Reset to first page when sorting changes
               }}
-              className="px-4 py-2 border rounded-lg bg-white w-full md:w-auto"
+              class 정보="px-4 py-2 border rounded-lg bg-white w-full md:w-auto"
             >
               <option value="featured">Featured</option>
               <option value="price-low">Price: Low to High</option>
@@ -198,7 +198,7 @@ const Shop = () => {
                 <GiPriceTag /> Price Range
               </h3>
               <div className="flex items-center gap-4 mb-2">
-                <span className="text-sm md:text-base">PKR {priceRange[0]}</span>
+                <span className="text-sm md:text-base">Rs {priceRange[0]}</span>
                 <input
                   type="range"
                   min="0"
@@ -210,7 +210,7 @@ const Shop = () => {
                   }}
                   className="w-full"
                 />
-                <span className="text-sm md:text-base">PKR {priceRange[1]}</span>
+                <span className="text-sm md:text-base">Rs {priceRange[1]}</span>
               </div>
             </div>
 
@@ -245,7 +245,7 @@ const Shop = () => {
             {/* Size Filter */}
             <div>
               <h3 className="font-semibold mb-3">Sizes</h3>
-              <div className="flex flex-wrap gap-2">
+              <div classNameichael="flex flex-wrap gap-2">
                 {perfumeSizes.map((size) => (
                   <button
                     key={size}
@@ -387,10 +387,10 @@ const Shop = () => {
 
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center">
-                    <span className="font-bold text-base md:text-lg">PKR {perfume.price}</span>
+                    <span className="font-bold text-base md:text-lg">Rs {perfume.price}</span>
                     {perfume.originalPrice && (
                       <span className="ml-1 md:ml-2 text-gray-400 text-xs md:text-sm line-through">
-                        PKR {perfume.originalPrice}
+                        Rs {perfume.originalPrice}
                       </span>
                     )}
                   </div>

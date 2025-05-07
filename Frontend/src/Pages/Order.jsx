@@ -18,9 +18,9 @@ const OrderPage = () => {
               <img src="${data.img}" alt="${data.name}" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px;" />
             </td>
             <td style="padding: 8px; font-weight: 500; color: #1f2937;">${data.name}</td>
-            <td style="padding: 8px; color: #4b5563;">PKR ${data.price}</td>
+            <td style="padding: 8px; color: #4b5563;">Rs ${data.price}</td>
             <td style="padding: 8px; color: #4b5563;">x${cartItems[data._id]}</td>
-            <td style="padding: 8px; font-weight: 600; color: #1f2937;">PKR ${(
+            <td style="padding: 8px; font-weight: 600; color: #1f2937;">Rs ${(
               data.price * cartItems[data._id]
             ).toFixed(2)}</td>
           </tr>
@@ -55,15 +55,15 @@ const OrderPage = () => {
           <div style="border-top: 1px solid #e5e7eb; padding-top: 16px;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
               <span style="color: #4b5563;">Subtotal</span>
-              <span style="font-weight: 600;">PKR ${subtotal.toFixed(2)}</span>
+              <span style="font-weight: 600;">Rs ${subtotal.toFixed(2)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
               <span style="color: #4b5563;">Delivery Fee</span>
-              <span style="font-weight: 600;">PKR ${deliveryFee.toFixed(2)}</span>
+              <span style="font-weight: 600;">Rs ${deliveryFee.toFixed(2)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-weight: 600;">
               <span>Total</span>
-              <span>PKR ${total.toFixed(2)}</span>
+              <span>Rs ${total.toFixed(2)}</span>
             </div>
           </div>
           <p style="color: #4b5563; margin-top: 24px;">For any questions, contact us at support@example.com.</p>
@@ -184,7 +184,7 @@ const OrderPage = () => {
                       <div>
                         <p className="font-medium text-gray-800">{data.name}</p>
                         <p className="text-sm text-gray-500">{data.scents}</p>
-                        <p className="text-sm text-gray-600">Price: PKR {data.price}</p>
+                        <p className="text-sm text-gray-600">Price: Rs {data.price}</p>
                       </div>
                     </div>
 
@@ -192,7 +192,7 @@ const OrderPage = () => {
                     <div className="flex items-center gap-4">
                       <p className="text-gray-700">x{cartItems[data._id]}</p>
                       <p className="text-gray-800 font-semibold">
-                        PKR {(data.price * cartItems[data._id]).toFixed(2)}
+                        Rs {(data.price * cartItems[data._id]).toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -206,18 +206,18 @@ const OrderPage = () => {
           <div className="mt-8">
             <div className="flex justify-between text-gray-700">
               <p>Subtotal</p>
-              <p className="font-semibold">PKR {getTotalCartAmount().toFixed(2)}</p>
+              <p className="font-semibold">Rs {getTotalCartAmount().toFixed(2)}</p>
             </div>
             <hr className="my-4 border-gray-100" />
             <div className="flex justify-between text-gray-700">
               <p>Delivery fee</p>
-              <p className="font-semibold">PKR {getTotalCartAmount() === 0 ? 0 : 200}</p>
+              <p className="font-semibold">Rs {getTotalCartAmount() === 0 ? 0 : 200}</p>
             </div>
             <hr className="my-4 border-gray-100" />
             <div className="flex justify-between text-gray-800">
               <p className="font-semibold">Total</p>
               <p className="font-semibold">
-                PKR {(getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200).toFixed(2)}
+                Rs {(getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200).toFixed(2)}
               </p>
             </div>
           </div>

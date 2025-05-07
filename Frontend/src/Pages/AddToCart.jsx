@@ -103,14 +103,14 @@ const AddToCart = () => {
                       <div>
                         <p className="font-medium text-sm sm:text-base text-gray-900 line-clamp-1">{data.name}</p>
                         <p className="text-xs sm:text-sm text-gray-500 sm:hidden">
-                          PKR {data.price} × {cartItems[data._id]}
+                          Rs {data.price} × {cartItems[data._id]}
                         </p>
                       </div>
                     </div>
 
                     {/* Product Price (Desktop) */}
                     <div className="hidden sm:block col-span-2 text-center text-gray-700 text-sm">
-                      PKR {data.price}
+                      Rs {data.price}
                     </div>
 
                     {/* Quantity Controls */}
@@ -141,7 +141,7 @@ const AddToCart = () => {
 
                     {/* Total Price (Desktop) */}
                     <div className="hidden sm:block col-span-2 text-center font-semibold text-gray-900 text-sm">
-                      PKR {(data.price * cartItems[data._id]).toFixed(2)}
+                      Rs {(data.price * cartItems[data._id]).toFixed(2)}
                     </div>
 
                     {/* Remove Button */}
@@ -169,7 +169,7 @@ const AddToCart = () => {
                     {/* Mobile Total */}
                     <div className="col-span-12 sm:hidden flex justify-between items-center pt-2">
                       <span className="font-semibold text-sm text-gray-900">
-                        PKR {(data.price * cartItems[data._id]).toFixed(2)}
+                        Rs {(data.price * cartItems[data._id]).toFixed(2)}
                       </span>
                     </div>
                   </div>
@@ -242,18 +242,18 @@ const AddToCart = () => {
               <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                 <div className="flex justify-between text-sm sm:text-base">
                   <p className="text-gray-600">Subtotal</p>
-                  <p className="font-medium">PKR {getTotalCartAmount().toFixed(2)}</p>
+                  <p className="font-medium">Rs {getTotalCartAmount().toFixed(2)}</p>
                 </div>
                 <div className="flex justify-between text-sm sm:text-base">
                   <p className="text-gray-600">Shipping</p>
                   <p className="font-medium">
-                    PKR {getTotalCartAmount() === 0 ? 0 : 2}
+                    Rs {getTotalCartAmount() === 0 ? 0 : 2}
                   </p>
                 </div>
                 <div className="flex justify-between pt-3 sm:pt-4 border-t border-gray-200 text-sm sm:text-base">
                   <p className="text-gray-600">Estimated Tax</p>
                   <p className="font-medium">
-                    PKR {(getTotalCartAmount() * 0.08).toFixed(2)}
+                    Rs {(getTotalCartAmount() * 0.08).toFixed(2)}
                   </p>
                 </div>
               </div>
@@ -261,7 +261,7 @@ const AddToCart = () => {
               <div className="flex justify-between items-center py-3 sm:py-4 border-t border-b border-gray-200 mb-4 sm:mb-6">
                 <p className="font-bold text-gray-900 text-sm sm:text-base">Total</p>
                 <p className="text-lg sm:text-xl font-bold text-gray-900">
-                  PKR {(getTotalCartAmount() === 0
+                  Rs {(getTotalCartAmount() === 0
                     ? 0
                     : (getTotalCartAmount() + 2 + getTotalCartAmount() * 0.08)).toFixed(2)}
                 </p>
