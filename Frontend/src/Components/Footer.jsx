@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-8 sm:py-12 px-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap justify-between items-center gap-6">
+        <div className="flex flex-wrap md:justify-between justify-start md:items-center items-start gap-10 px-10">
           {/* Company Info */}
           <address className="space-y-3 not-italic">
             <h3 className="text-lg sm:text-xl font-bold">FAZIFFY</h3>
@@ -87,7 +87,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="bg-indigo-600 text-white py-2 px-4 rounded text-sm sm:text-base font-semibold hover:bg-indigo-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="bg-black text-white py-2 px-4 rounded text-sm sm:text-base font-semibold hover:bg-white hover:text-black transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white border-2 border-white "
                 aria-label="Subscribe to newsletter"
               >
                 SUBSCRIBE
