@@ -14,29 +14,29 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-8 sm:py-12 px-4">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap md:justify-between justify-start md:items-center items-start gap-10 px-10">
+    <footer className="bg-black text-white py-8 sm:py-12 ">
+      <div className="">
+        <div className="flex flex-wrap md:justify-between justify-start md:items-center items-start gap-10 px-4  md:px-15">
           {/* Company Info */}
           <address className="space-y-3 not-italic">
-            <h3 className="text-lg sm:text-xl font-bold">FAZIFFY</h3>
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              58 White St., New York
+            <h3 className="text-lg  font-bold">FAZIFFY</h3>
+            <p className="text-gray-300 text-sm  leading-relaxed">
+              Pakistan 
               <br />
               <a
-                href="mailto:cosmecos_company@mail.com"
+                href="Faiziffy@gmail.com"
                 className="hover:text-indigo-400 transition-colors duration-200"
-                aria-label="Email us at cosmecos_company@mail.com"
+                aria-label="Email us at Faiziffy@gmail.com"
               >
-                cosmecos_company@mail.com
+               Faiziffy@gmail.com
               </a>
               <br />
               <a
-                href="tel:+180098745698"
+                href="tel:+92 312 9167293"
                 className="hover:text-indigo-400 transition-colors duration-200"
-                aria-label="Call us at +1 (800) 987 456 98"
+                aria-label="Call us at +92 312 9167293"
               >
-                +1 (800) 987 456 98
+                +92 312 9167293
               </a>
             </p>
           </address>
